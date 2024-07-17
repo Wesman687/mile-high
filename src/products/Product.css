@@ -1,0 +1,37 @@
+
+.popular__products {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.product__image {
+    width: 150px;
+}
+.products {
+    width: 90%;
+    border: 2px solid #fff;
+    padding: 32px;
+    box-shadow: rgba(255, 255, 255, 0.288) 0px 0px 40px .2px;
+}
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #fff;
+    width: 30%;
+    gap: 12px;
+    padding: 12px;
+}
+.product__strain {
+    border: 1px solid white;
+    padding: 2px;
+}
+.price__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.product__title {
+    font-size: 24px;
+}

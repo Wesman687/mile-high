@@ -1,5 +1,6 @@
 import React from 'react'
 import { flower, accessories } from '../assetts/Assets'
+import './Product.css'
 
 const Product = () => {
   return (
