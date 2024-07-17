@@ -1,8 +1,9 @@
 import React from 'react'
 import './Nav.css'
-import logo from '../assetts/THCA.webp'
+import { useNavigate } from 'react-router-dom'
 
 const Nav = () => {
+    const navigate = useNavigate()
   return (
     <div className='nav__container'>
         <div className="logo__container">
@@ -12,7 +13,7 @@ const Nav = () => {
         <div className="nav__wrapper">
             <ul className='links'>
                 <li className="Shop link shadoww">Shop</li>
-                <li className="home link shadoww">Home</li>
+                <li onClick={()=>navigate("/")} className="home link shadoww click">Home</li>
             <li className="link shadoww cart">Cart</li>
             <li className="link shadoww login">Login</li>
             <li className="link shadoww contact">Contact Us</li>

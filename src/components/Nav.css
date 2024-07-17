@@ -7,6 +7,14 @@
     display: flex;
     align-items: center;
     display: flex;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+.nav__container::after {
+    
+    background: #ffffff46;
 }
 .logo__container {
     width: 15vw;

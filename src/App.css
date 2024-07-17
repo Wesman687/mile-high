@@ -1,5 +1,5 @@
 .components {
-  display: flex
+  display: flex;
 }
 .shadoww {
   text-shadow:
@@ -7,4 +7,14 @@
    1px 0px 0 #fff,
    0px 0px 0 #fff,
     0px 1px 0 #fff;
+}
+.split {
+  display: flex;
+}
+.filler {
+  width: 15vw;
+  display: flex;
+}
+.main {
+  display: flex;
 }

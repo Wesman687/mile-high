@@ -1,14 +1,29 @@
 .landing__container {
     background-color: #0d0b24;
     width: 85vw;
-    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;    
+
+    
 }
 .products__title {
     color: rgb(253, 0, 0);
     text-decoration: underline;
     font-size: 48px;
     padding: 62px;
+}
+.left, .right {
+    color: white;
+    font-size: 32px;
+}
+.carosuel {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+::-webkit-scrollbar {
+    display: none;
 }
