@@ -1,11 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Nav.css";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import ContextProvider, { Context } from "../context/ContextProvider";
+import { Context } from "../context/ContextProvider";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, logout } from "../firebase/init";
 
-const Nav = ({}) => {
+const Nav = ({}) => {  
+  const [signState, setSignState] = useState("Sign In")
+  useEffect(() => {
+    onAuthStateChanged(auth, async(user)=> {
+      if (user) {
+        setSignState("Sign Out")
+      }
+      else {
+        setSignState("Sign In")
+      }
+    })
+    
+  }, [])
+  function logoutNow(){
+    logout()
+    setSignState("Sign In")
+  }
+  console.log(signState)
   const { numberOfItems } = useContext(Context);
   const navigate = useNavigate();
   return (
@@ -21,7 +40,7 @@ const Nav = ({}) => {
             Home
           </li>         
           
-          <li className="link login">Login</li>
+          {signState === "Sign In" ? <Link to="/login"><li className="link login">Login</li></Link> : <li className="link logout click" onClick={()=>{logout()}}>Log out</li>}
           <li className="link contact">Contact Us</li>
         </ul>
         <Link to="/cart">

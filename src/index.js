@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 import ContextProvider from './context/ContextProvider';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faBars, faCartShopping, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faCartShopping, faShoppingCart, faSpinner } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faBars, faShoppingCart, faCartShopping)
+library.add(faBars, faShoppingCart, faCartShopping, faSpinner)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

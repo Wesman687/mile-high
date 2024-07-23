@@ -3,10 +3,12 @@ import EmptyCart from "../assetts/empty_cart.svg";
 import { Link } from "react-router-dom";
 import { flower } from "../assetts/Assets";
 import { Context } from "../context/ContextProvider";
+import {loadStripe} from '@stripe/stripe-js'
 import "./Cart.css";
 
 const Cart = () => {
   const { addToCart, cart, removeItem, changeQuantity } = useContext(Context);
+  const apiURL = ""
   const total = () => {
     let price = 0;
     cart.forEach((item) => {
@@ -16,7 +18,24 @@ const Cart = () => {
     });
     return price;
   };
-  console.log(cart);
+  async function makePayment() {
+    const stripe = await loadStripe(process.env.REACT_APP_STRIPE_KEY)
+    const body = {
+        products: cart
+    }
+    const headers={
+        "Content-type":"application/json"
+    }
+    const response = await fetch(`${apiURL}/create-checkout-session`,{
+        method:"POST",
+        headers:headers,
+        body:JSON.stringify(body)
+    })
+    const session = await response.json
+    const result = stripe.redirectToCheckout({
+        sessionId:session.id
+    })
+  }
   return (
     <div className="cart__container">
       <div className="cart__row">
@@ -43,7 +62,7 @@ const Cart = () => {
                         className="cart__item--img"
                         
                       />
-                      <span cart__item--title>{flower[items.id].title} </span>
+                      <span className="cart__item--title">{flower[items.id].title} </span>
                     </div>
                     <div className="cart__quantity--box">
                       <input
@@ -98,12 +117,13 @@ const Cart = () => {
               <span>Total</span>
               <span>${(total() + total() * 0.1).toFixed(2)}</span>
             </div>
+            <form action="/create-checkout-session" method="POST">
             <button
               className="btn btn__checkout no-cursor"
-              onClick={() => alert("Still need to do this")}
             >
               Proceed to checkout
             </button>
+            </form>
           </div>
         )}
       </div>

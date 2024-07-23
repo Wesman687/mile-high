@@ -24,3 +24,15 @@
   justify-content: center;
   height: 85vh;
 }
+.fa-spinner {
+  animation: rotate 600ms infinite linear;
+}
+
+@keyframes rotate {
+  0% { 
+      transform: rotate(0)
+  }
+  100% {
+      transform: rotate(360deg)
+  }
+}
