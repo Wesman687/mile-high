@@ -1,0 +1,23 @@
+.aboutus__wrapper {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 80vh;
+}
+.aboutus__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.aboutus__wrapper h1 {
+    padding: 32px;
+    font-size: 64px;
+}
+.aboutus__wrapper p {
+    font-size: 32px;
+    line-height: 3;
+}

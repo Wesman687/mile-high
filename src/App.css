@@ -18,3 +18,9 @@
 .main {
   display: flex;
 }
+.page__wrappers {  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+}

@@ -1,0 +1,8 @@
+.ship__wrapper {
+    width: 80%;
+}
+.ship__wrapper p {
+    text-align: center;
+    font-size: 64px;
+    line-height: 1.5;
+}

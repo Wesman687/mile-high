@@ -44,6 +44,9 @@
 .pd__strain:hover {
     border-color: red;
 }
+.pd__strain:focus {
+    border-color: #e70303;
+}
 .pd__strain--req {
     font-size: 16px;
     padding: 12px 0px;
@@ -109,4 +112,11 @@
     padding-top: 16px;
     width: 150px;
     max-height: 150px;
+}
+.thumb__image:hover {
+    transform: scale(150%);
+}
+.display__price {
+    color: #e70303;
+    font-size: 18px;
 }

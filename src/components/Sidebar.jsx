@@ -1,16 +1,17 @@
 import React from 'react'
 import './Sidebar.css'
 import logo from '../assetts/THCA.webp'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Sidebar = () => {
   return (
     <div className='sb__container'>
       <ul className="sb__links">
-        <li className="flower click sb__link">FLOWER</li>
-        <li className="accessories click sb__link">ACCESSORIES</li>
-        <li className="wholesale click sb__link">WHOLESALE</li>
-        <li className="what click sb__link">WHAT IS THCA?</li>
-        <li className="states sb_link click">Ship States</li>
+        <Link to='/wholesale'><li className="WHOLESALE click sb__link">WHOLESALE</li></Link>
+        <Link to='/aboutus'><li className="aboutus click sb__link">About Us</li></Link>
+        <Link to='/benefits'><li className="benefits click sb__link">THCA Benefits</li></Link>
+        <Link to='/THCA'><li className="what click sb__link">WHAT IS THCA?</li></Link>
+        <Link to='/shipstates'> <li className="states sb_link click">Ship States</li></Link>
       </ul>
       
       <img src={logo} alt="" className="thca" />

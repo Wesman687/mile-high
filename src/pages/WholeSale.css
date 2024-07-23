@@ -1,0 +1,22 @@
+.wholesale__container {
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+}
+.wholesale__wrapper img {
+    width: 60%;
+    padding: 32px;
+}
+.wholesale__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.wholesale__wrapper h1 {
+    padding: 32px;
+    font-size: 32px;
+}
+.wholesale__wrapper p {
+    font-size: 24px;
+}

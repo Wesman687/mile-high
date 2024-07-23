@@ -2,9 +2,9 @@ import React from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import "./Landing.css";
-import { flower, accessories } from "../Assets";
-import Product from "../../products/Product";
-import Accessories from "../../products/Accessories";
+import { flower, accessories } from "../assetts/Assets";
+import Product from "../products/Product";
+import Accessories from "../products/Accessories";
 const Landing = () => {
     const responsive = {
         0: { 

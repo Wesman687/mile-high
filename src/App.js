@@ -2,13 +2,19 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Nav from './components/Nav';
 import Sidebar from './components/Sidebar';
-import Landing from './assetts/pages/Landing';
-import ProductDisplay from './assetts/pages/ProductDisplay';
+import Landing from './pages/Landing.jsx';
+import ProductDisplay from './pages/ProductDisplay.jsx';
 import { useContext, useEffect } from 'react';
-import { Context } from './context/ContextProvider.jsx'
+import ContextProvider, { Context } from './context/ContextProvider.jsx'
+import Cart from './components/Cart.jsx';
+import ShipStates from './pages/ShipStates.jsx';
+import THCA from './pages/THCA.jsx';
+import Benefits from './pages/Benefits.jsx';
+import AboutUs from './pages/AboutUs.jsx';
+import WholeSale from './pages/WholeSale.jsx';
 
 function App() {
-  const { getArrays, flowerArray } = useContext(Context)
+  const { getArrays, flowerArray, numberOfItems } = useContext(Context)
   useEffect(()=> {
     getArrays()
   },[])
@@ -26,6 +32,12 @@ function App() {
       <Routes>
         <Route path='/' key="_index"  element={<Landing /> }/>
         <Route path='/product/:index' key="_index" element={<ProductDisplay flowerArray={flowerArray} />}/> 
+        <Route path='/cart' element={<Cart />} />
+        <Route path='/shipstates' element={<ShipStates />} />
+        <Route path='/thca' element={<THCA />} />        
+        <Route path='/benefits' element={<Benefits />} />        
+        <Route path='/aboutus' element={<AboutUs />} />
+        <Route path='/wholesale' element={<WholeSale />} />
       </Routes>
       </div>
       </div>

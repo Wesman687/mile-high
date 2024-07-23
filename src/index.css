@@ -7,6 +7,11 @@
   box-sizing: border-box;
   list-style-type: none;
   
+  
+}
+a:-webkit-any-link {
+  text-decoration: none;
+  color: inherit;
 }
 .click {
   cursor: pointer; 
