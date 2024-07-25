@@ -9,6 +9,7 @@
 }
 .pd__image {
     width: 60%;
+    max-width: 350px;
     max-height: 40vh;
 }
 .pd__wrapper {
