@@ -1,64 +1,81 @@
-
 .popular__products {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 .product__name {
-    font-size: 24px;
+  font-size: 24px;
 }
 .product__image {
-    width: 60%;
+  width: 60%;
 }
 .products {
-    width: 85%;
-    border: 2px solid #fff;
-    padding: 16px;
-    box-shadow: rgba(255, 255, 255, 0.288) 0px 0px 40px .2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 85%;
+  border: 2px solid #fff;
+  padding: 16px;
+  box-shadow: rgba(255, 255, 255, 0.288) 0px 0px 40px 0.2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .img__wrapper {
-    max-height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  max-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .product {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #fff;
-    gap: 12px;
-    width: 350px;
-    height: 450px;
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  gap: 12px;
+  width: 350px;
+  height: 450px;
 }
 .product__strain {
-    text-decoration: underline;
-    padding: 2px;    
-    font-size: 12px;
-    
+  text-decoration: underline;
+  padding: 2px;
+  font-size: 12px;
 }
 .strain__container {
-    display: flex;
-    gap: 6px;    
-    overflow-x: scroll;
-    overflow: hidden;
+  display: flex;
+  gap: 6px;
+  overflow-x: scroll;
+  overflow: hidden;
 }
 .price__wrapper {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 .product__title {
-    font-size: 18px;
-    text-align: center;
-    width: 60%;
+  font-size: 18px;
+  text-align: center;
+  width: 60%;
 }
-.alice-carousel__prev-btn, .alice-carousel__next-btn{
-    display: none;
+.alice-carousel__prev-btn,
+.alice-carousel__next-btn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .product {
+    width: 250px;
+    height: 300px;
+  }
+  .product__title {
+    font-size: 12px;
+  }
+  .product__name {
+    font-size: 18px;
+  }
+  .product__price {
+    font-size: 18px;
+  }
+  .product__grams {
+    font-size: 12px;
+  }
 }

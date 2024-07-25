@@ -27,3 +27,14 @@
 ::-webkit-scrollbar {
     display: none;
 }
+
+
+@media (max-width: 768px) { 
+    .landing__container {
+        width: 100vw;
+    }
+    .products__title {
+        font-size: 28px;
+    }
+
+}

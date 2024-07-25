@@ -30,7 +30,7 @@
     font-size: 28px;
     font-weight: bold;
     gap: 90px;
-    padding-left: 24px;
+    text-align: center;
 }
 .thca {
     position: relative;
@@ -40,4 +40,15 @@
 }
 .sb__link:hover {
     color: rgba(0, 255, 0, 0.712);
+}
+@media (max-width: 768px) { 
+    
+    .sb__container {
+        display: none;
+    }
+    .filler { 
+        display: none;
+    }
+
+
 }

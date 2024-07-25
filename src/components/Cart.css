@@ -156,7 +156,7 @@
   }
   
   .cart__empty--img {
-    width: 750px;
+    width: 60%;
     padding: 40px;
   }
   
@@ -168,6 +168,18 @@
     color: #fff;
   }
   .btn__checkout:hover {
+    background-color: #fff;
+    color: #7342d6;
+  }
+  .cart__home {
+    padding: 8px 16px;
+    background-color: #7342d6;
+    color: white;
+    font-size: 24px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .cart__home:hover { 
     background-color: #fff;
     color: #7342d6;
   }

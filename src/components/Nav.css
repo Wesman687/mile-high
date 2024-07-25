@@ -7,6 +7,7 @@
     display: flex;
     align-items: center;
     display: flex;
+    justify-content: center;
     position: sticky;
     top: 0;
     left: 0;
@@ -34,7 +35,6 @@
     z-index: 2;
     color: white;
     font-size: 28px;
-    width: 80%;
     margin-left: 12px;
     border: 18px solid rgba(0, 255, 0, 0.712);
     border-radius: 24px;
@@ -90,4 +90,31 @@
     bottom: 4px;
     right: -4px;
     pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    .logo__text {
+        font-size: 14px;
+        border: 6px solid rgba(0, 255, 0, 0.712);
+        border-radius: 8px;
+    }
+    .link {
+        font-size: 16px;
+    }
+    .nav__container {
+        position: relative;
+        display: flex;
+    }
+    .nav__icon { 
+        font-size: 18px;
+    }
+    .cart__length {
+        font-size: 8px;
+        width: 9px;
+        height: 9px;
+    }
+    .links {
+        gap: 16px;
+    }
+
   }

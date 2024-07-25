@@ -97,7 +97,7 @@ const Cart = () => {
               <img src={EmptyCart} alt="" className="cart__empty--img" />
               <h2>You don't have any items in your cart!</h2>
               <Link to="/">
-                <button className="btn">Home</button>
+                <button className="btn cart__home">Home</button>
               </Link>
             </div>
           )}
