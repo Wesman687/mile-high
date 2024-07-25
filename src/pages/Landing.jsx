@@ -9,8 +9,27 @@ import { useState } from "react";
 import { useContext } from "react";
 import { Context } from "../context/ContextProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
+
+
+
 const Landing = () => {
   const { flowerArray, loading} = useContext(Context)
+    const responsive = {
+        850: { 
+            items: 1,
+            itemsFit: 'contain'
+        },
+        1000: { 
+            items: 2,            
+            itemsFit: 'contain'
+        },
+        1400: {
+            items: 4, 
+            itemsFit: 'contain'
+        },
+    };
   return (
     <div className="landing__container">
       <div className="popular__products">
@@ -19,11 +38,18 @@ const Landing = () => {
          {loading ? <div className="login-spinner"><FontAwesomeIcon icon="fas fa-spinner"></FontAwesomeIcon></div> : 
          <div className="products">
             <AliceCarousel
+            autoWidth={true}
+            autoHeight={true}
+            infinite={true}
+            keyboardNavigation={true}
+            paddingRight={12}
+              responsive={responsive}
               mouseTracking
+              
               items={flowerArray.map((flower, index) => (
-                <Product array={flower} index={index} />
-              ))}
-            />
+                <Product array={flower} index={index} />                
+              ))}              
+            />            
           </div>}
         </div>
       </div>
@@ -32,11 +58,17 @@ const Landing = () => {
         <div className="carosuel accessories_carosuel">
           <div className="products accessories">
             <AliceCarousel
-              mouseTracking
+             autoWidth={true}
+             autoHeight={true}
+             infinite={true}
+             keyboardNavigation={true}
+             paddingRight={12}
+               responsive={responsive}
+               mouseTracking
               items={accessories.map((items, index) => (
                 <Accessories array={items} index={index} />
               ))}
-            />
+            />            
           </div>
         </div>
       </div>
