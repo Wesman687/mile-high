@@ -38,9 +38,9 @@ const Nav = ({}) => {
           <li onClick={() => navigate("/")} className="home link click">
             Home
           </li>         
-          
-          {signState === "Sign In" ? <Link to="/login"><li className="link login">Login</li></Link> : <li className="link logout click" onClick={()=>{logout()}}>Log out</li>}
           <li className="link contact">Contact Us</li>
+          {signState === "Sign In" ? <Link to="/login"><li className="link login">Login</li></Link> : <li className="link logout click" onClick={()=>{logout()}}>Log out</li>}
+          
         <Link to="/cart">
         <li className="nav__icon">
           <FontAwesomeIcon icon={faShoppingCart} className="shopping__cart" />

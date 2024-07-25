@@ -104,6 +104,9 @@
     .nav__container {
         position: relative;
         display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 10vh;
     }
     .nav__icon { 
         font-size: 18px;
@@ -116,5 +119,10 @@
     .links {
         gap: 16px;
     }
-
+    .contact {
+        display: none;
+    }
+    .logo__container { 
+        width: 25%;
+    }
   }

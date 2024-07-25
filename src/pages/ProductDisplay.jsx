@@ -67,14 +67,13 @@ const ProductDisplay = () => {
   }, []);
   return (
     <div className="row">
+        <div className="pd__container">
       {loading ? (
         <div className="login-spinner">
           <FontAwesomeIcon icon="fas fa-spinner"></FontAwesomeIcon>
         </div>
-      ) : (
-        <div className="pd__container">
-          <div className="picture__options">
-            <div className="pd__wrapper">
+      ) : ( <>
+            {flowerArray.length > 0 && <><div className="pd__wrapper">
               <img src={flowerArray[id].image} alt="" className="pd__image" />
               <div className="pd__info">
                 <h1 className="pd__title">{flower[id].title}</h1>
@@ -101,6 +100,7 @@ const ProductDisplay = () => {
                 )}
                 <div className="amount">
                   <span className="amount__text">Quantity:</span>
+                  <div className="amount__button">
                   <button
                     onClick={() => decreaseAmount()}
                     className="down click"
@@ -119,6 +119,7 @@ const ProductDisplay = () => {
                   <button onClick={() => increaseAmount()} className="up click">
                     +
                   </button>
+                  </div>
                 </div>
                 {productExistsOnCart() ? (
                   <button
@@ -138,7 +139,7 @@ const ProductDisplay = () => {
               </div>
             </div>
             <h1 className="pd__desc">{flower[id].desc}</h1>
-          </div>
+            </>}
           <div className="pd__thumb--window">
             {flower[id].thumb.map((curr, index) => (
               <figure className="thumb__figure" key={index}>
@@ -146,8 +147,9 @@ const ProductDisplay = () => {
               </figure>
             ))}
           </div>
-        </div>
+          </>
       )}
+        </div>
     </div>
   );
 };

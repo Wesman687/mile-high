@@ -8,12 +8,12 @@
   flex-direction: column;
 }
 .pd__image {
-    width: 450px;
+    width: 60%;
     max-height: 40vh;
 }
 .pd__wrapper {
     display: flex;
-    width: 500px;
+    width: 70%;
 }
 .pd__info {
     display: flex;
@@ -86,6 +86,7 @@
     font-size: 16px;
     padding-top: 12px;
     line-height: 1.5;
+    width: 70%;
 }
 .picture__options{
     width: 30%;
@@ -113,6 +114,9 @@
     width: 150px;
     max-height: 150px;
 }
+.amount__button {
+    display: flex;
+}
 .thumb__image:hover {
     transform: scale(150%);
 }
@@ -120,3 +124,42 @@
     color: #e70303;
     font-size: 18px;
 }
+
+@media (max-width: 768px) {
+    .pd__container {
+        width: 100vw;
+        padding: 0 !important;
+    }
+    .pd__wrapper {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+    .pd__thumb--window {
+        display: none;
+    }
+    .filler {
+        display: none;
+    }
+    .row {
+        padding: 0;
+    }
+    .pd__info {        
+        padding: 24px 0px;
+        align-items: center;
+    }
+    .pd__title {
+        font-size: 18px;
+        text-align: center;
+    }
+    .amount {
+        flex-direction: column;
+    }
+    .amount__button {
+        padding: 12px 0px;
+    }
+    .display__price {
+        padding-top: 12px;
+    }
+  }
