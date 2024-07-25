@@ -7,6 +7,7 @@ const Product = ({array, index}) => {
     const handleDragStart = (e) => e.preventDefault()
   return (
     <div className="product item click" data-value={index} onClick={()=>navigate(`./product/${index}`)}>
+      <h1 className="product__name">{array.name}</h1>
       <h1 className="product__title">{array.title}</h1>
       <figure className="img__wrapper">
       <img src={array.image} onDragStart={handleDragStart} role="presentation" alt="" className="product__image" />

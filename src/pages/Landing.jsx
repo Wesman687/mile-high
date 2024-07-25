@@ -5,7 +5,13 @@ import "./Landing.css";
 import { flower, accessories } from "../assetts/Assets";
 import Product from "../products/Product";
 import Accessories from "../products/Accessories";
+import { useState } from "react";
+import { useContext } from "react";
+import { Context } from "../context/ContextProvider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Landing = () => {
+  const { flowerArray, loading} = useContext(Context)
+
     const responsive = {
         0: { 
             items: 1
@@ -23,15 +29,16 @@ const Landing = () => {
       <div className="popular__products">
         <h1 className="products__title shadoww">Popular Products</h1>
         <div className="carosuel">
-          <div className="products">
+         {loading ? <div className="login-spinner"><FontAwesomeIcon icon="fas fa-spinner"></FontAwesomeIcon></div> : 
+         <div className="products">
             <AliceCarousel
               responsive={responsive}
               mouseTracking
-              items={flower.map((flower, index) => (
+              items={flowerArray.map((flower, index) => (
                 <Product array={flower} index={index} />
               ))}
             />
-          </div>
+          </div>}
         </div>
       </div>
       <div className="popular__products accessories">

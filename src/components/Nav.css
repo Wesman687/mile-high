@@ -49,6 +49,9 @@
     font-weight: bold;
     
 }
+.link:hover { 
+    color: rgba(0, 255, 0, 0.712);
+}
 .links {
     display: flex;
     gap: 32px;
@@ -69,6 +72,9 @@
     font-size: 48px;
     position: relative;
     margin-left: 8px;
+}
+.nav__icon:hover {
+    color: rgba(0, 255, 0, 0.712);
 }
 .cart__length {
     background-color: red;

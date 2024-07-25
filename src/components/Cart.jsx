@@ -7,7 +7,7 @@ import {loadStripe} from '@stripe/stripe-js'
 import "./Cart.css";
 
 const Cart = () => {
-  const { addToCart, cart, removeItem, changeQuantity } = useContext(Context);
+  const {  cart, removeItem, changeQuantity, flowerArray } = useContext(Context);
   const apiURL = ""
   const total = () => {
     let price = 0;
@@ -62,7 +62,7 @@ const Cart = () => {
                         className="cart__item--img"
                         
                       />
-                      <span className="cart__item--title">{flower[items.id].title} </span>
+                      <span className="cart__item--title">{flowerArray[items.id].title} </span>
                     </div>
                     <div className="cart__quantity--box">
                       <input
@@ -83,7 +83,6 @@ const Cart = () => {
                     </div>
                     </div>
 
-                      <div className="cart__strain">{items.type}</div>
                       <div className="cart__size">{items.size}</div>
                       <div className="cart__book--price">{items.price}</div>
                   </div>
@@ -119,7 +118,7 @@ const Cart = () => {
             </div>
             <form action="/create-checkout-session" method="POST">
             <button
-              className="btn btn__checkout no-cursor"
+              className="btn btn__checkout click"
             >
               Proceed to checkout
             </button>

@@ -35,7 +35,6 @@ const Nav = ({}) => {
 
       <div className="nav__wrapper">
         <ul className="links">
-          <li className="Shop link">Shop</li>
           <li onClick={() => navigate("/")} className="home link click">
             Home
           </li>         

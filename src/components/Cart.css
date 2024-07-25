@@ -163,7 +163,13 @@
   .btn__checkout {
     width: 100%;
     font-size: 16px;
-    padding: 12px 0;
+    padding: 12px 6px;
+    background-color: #7342d6;
+    color: #fff;
+  }
+  .btn__checkout:hover {
+    background-color: #fff;
+    color: #7342d6;
   }
   
   /* SMALL PHONES, TABLETS, LARGE SMARTPHONES */

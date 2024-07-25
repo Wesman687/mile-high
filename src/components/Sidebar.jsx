@@ -11,7 +11,7 @@ const Sidebar = () => {
         <Link to='/aboutus'><li className="aboutus click sb__link">About Us</li></Link>
         <Link to='/benefits'><li className="benefits click sb__link">THCA Benefits</li></Link>
         <Link to='/THCA'><li className="what click sb__link">WHAT IS THCA?</li></Link>
-        <Link to='/shipstates'> <li className="states sb_link click">Ship States</li></Link>
+        <Link to='/shipstates'> <li className="states sb__link click">Ship States</li></Link>
       </ul>
       
       <img src={logo} alt="" className="thca" />

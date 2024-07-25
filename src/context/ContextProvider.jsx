@@ -1,6 +1,11 @@
 import React, { createContext, useEffect, useState } from "react";
 import { flower, accessories } from "../assetts/Assets";
+import axios from "axios";
+
+
+
 export const Context = createContext();
+
 
 const ContextProvider = (props) => {
   const [flowerArray, setFlower] = useState([]);
@@ -12,15 +17,21 @@ const ContextProvider = (props) => {
     
   }, [cart]);
 
-  const getArrays = () => {
+  const getArrays = async () => {
     setLoading(true)
-    setFlower(flower);
+    const response = await axios("https://milehighserv.onrender.com/api/flower/list")
+    const data = response.data.flowers
+    setFlower(data)
     setAccessory(accessories);
-    setLoading(false)
+    setLoading(false)    
   }
-  function addToCart(id, option, strain, amount, total, base) {
-    setCart([...cart, { id, quantity: amount, size: option, type: strain, price: total, basePrice: base }]);
+
+
+  function addToCart(id, option,  amount, total, base) {
+    setCart([...cart, { id, quantity: amount, size: option, price: total, basePrice: base }]);
   }
+
+
   function changeQuantity(product, quantity) {
 
     setCart(
@@ -46,11 +57,19 @@ const ContextProvider = (props) => {
     setCart(cart.filter(product => product.id !== item))
     console.log('remove item', item)
   }
+
+
+
+
+
   const contextValue = {
-    flowerArray, getArrays,
+    flowerArray, getArrays, loading,
     accessoryArray, addToCart,
     cart, changeQuantity, removeItem, numberOfItems
   };
+
+
+
 
   return (
     <Context.Provider value={contextValue}>{props.children}</Context.Provider>

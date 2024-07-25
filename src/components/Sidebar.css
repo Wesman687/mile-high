@@ -38,3 +38,6 @@
     border: 15px solid white;
     width: 10vw;
 }
+.sb__link:hover {
+    color: rgba(0, 255, 0, 0.712);
+}
