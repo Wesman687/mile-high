@@ -1,13 +1,23 @@
 
-.login__container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 85vw;
-    height: 80vh;
-
+.login__modal {
+    position: relative;
+    width: 100%;
+    top: 0;
+    bottom: 50;
 }
-
+.login__button {
+    position: relative;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 14px;
+    border-color: white;
+}
+.login__button:hover {
+    background-color: white;
+    color: black;
+}
 .login-logo {
     width: 150px;
 }

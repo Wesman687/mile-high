@@ -2,20 +2,17 @@ import React from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import "./Landing.css";
-import { flower, accessories } from "../assetts/Assets";
+import { accessories } from "../assetts/Assets";
 import Product from "../products/Product";
 import Accessories from "../products/Accessories";
-import { useState } from "react";
-import { useContext } from "react";
-import { Context } from "../context/ContextProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 
 
 
-const Landing = () => {
-  const { flowerArray, loading} = useContext(Context)
+const Landing = ({flowerArray, loading}) => {
+  
     const responsive = {
         850: { 
             items: 1,

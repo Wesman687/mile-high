@@ -1,39 +1,26 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import EmptyCart from "../assetts/empty_cart.svg";
 import { Link } from "react-router-dom";
 import { flower } from "../assetts/Assets";
-import { Context } from "../context/ContextProvider";
-import { loadStripe } from "@stripe/stripe-js";
 import "./Cart.css";
+import { useDispatch, useSelector } from "react-redux";
+import { changeQuantity, removeItem, totalQuantity } from "../redux/cartSlice";
 
-const Cart = () => {
-  const { cart, removeItem, changeQuantity, flowerArray } = useContext(Context);
-  const apiURL = "";
+const Cart = ({flowerArray, loading}) => {
+  const [totalPrice, setTotal] = useState(0)
+  const cart = useSelector((state) => state.cart.cart)
+  const dispatch = useDispatch()
   const total = () => {
     let price = 0;
     cart.forEach((item) => {
       price += +(item.basePrice * item.quantity).toFixed(2);
     });
-    return price;
+    setTotal(price)
   };
-  async function makePayment() {
-    const stripe = await loadStripe(process.env.REACT_APP_STRIPE_KEY);
-    const body = {
-      products: cart,
-    };
-    const headers = {
-      "Content-type": "application/json",
-    };
-    const response = await fetch(`${apiURL}/create-checkout-session`, {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(body),
-    });
-    const session = await response.json;
-    const result = stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
-  }
+  useEffect(()=>{
+    total()
+    console.log(cart)
+  },[])
   return (
     <div className="cart__container">
       <div className="cart__row">
@@ -70,14 +57,19 @@ const Cart = () => {
                           min={1}
                           max={99}
                           value={items.quantity}
-                          onChange={(event) =>
-                            changeQuantity(items.id, event.target.value)
-                          }
+                          onChange={(event) =>{
+                            dispatch(changeQuantity({id: items.id, quantity:event.target.value}))                          
+                            dispatch(totalQuantity())
+
+                          }}
                           className="cart__input"
                         />
                         <button
                           className="cart__book--remove click"
-                          onClick={() => removeItem(items.id)}
+                          onClick={() => {
+                            dispatch(removeItem({id: items.id}))                          
+                            dispatch(totalQuantity())
+                          }}
                         >
                           Remove
                         </button>
@@ -107,15 +99,15 @@ const Cart = () => {
           <div className="total">
             <div className="total__item total__sub-total">
               <span>Subtotal</span>
-              <span>${total().toFixed(2)}</span>
+              <span>${totalPrice.toFixed(2)}</span>
             </div>
             <div className="total__item total__tax">
               <span>Tax</span>
-              <span>${(total() * 0.1).toFixed(2)}</span>
+              <span>${(totalPrice * 0.1).toFixed(2)}</span>
             </div>
             <div className="total__item total__price">
               <span>Total</span>
-              <span>${(total() + total() * 0.1).toFixed(2)}</span>
+              <span>${(totalPrice + totalPrice * 0.1).toFixed(2)}</span>
             </div>
             <form action="/create-checkout-session" method="POST">
               <button className="btn btn__checkout click">

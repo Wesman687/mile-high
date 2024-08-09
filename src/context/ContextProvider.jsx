@@ -1,5 +1,5 @@
-import React, { createContext, useEffect, useState } from "react";
-import { flower, accessories } from "../assetts/Assets";
+import React, { createContext, useState } from "react";
+import { accessories } from "../assetts/Assets";
 import axios from "axios";
 
 
@@ -13,9 +13,6 @@ const ContextProvider = (props) => {
   const [loading, setLoading] = useState(false)
   const [cart, setCart] = useState([])
   
-  useEffect(() => {
-    
-  }, [cart]);
 
   const getArrays = async () => {
     setLoading(true)
