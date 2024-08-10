@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import EmptyCart from "../assetts/empty_cart.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { flower } from "../assetts/Assets";
@@ -104,9 +104,11 @@ const Cart = ({flowerArray, loading}) => {
               <span>Total</span>
               <span>${(totalPrice + totalPrice * 0.1).toFixed(2)}</span>
             </div>
+            <form action="/create-checkout-session" method="POST">
               <button onClick={()=>navigate('/checkout')} className="btn btn__checkout click">
                 Proceed to checkout
               </button>
+            </form>
           </div>
         )}
       </div>
