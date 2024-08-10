@@ -1,34 +1,43 @@
+
+import './Checkout.css'
 import {
     EmbeddedCheckoutProvider,
     EmbeddedCheckout
   } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useCallback, useContext } from 'react';
-import { Context } from '../context/ContextProvider';
+import { useSelector } from 'react-redux';
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 const Checkout = () => {
-    const { cart } = useContext(Context)
+    const cart = useSelector((state) => state.cart.cart)
     const fetchClientSecret = useCallback(() => {
-        console.log(cart)
       // Create a Checkout Session
-      return fetch("http://localhost:4000/create-checkout-session", {
+      return fetch("mile-high-admin-993a46636778.herokuapp.com/create-checkout-session", {
+        headers: {
+            'Accept' : 'application/json',
+            'Content-Type': 'application/json'
+        },
         method: "POST",
+        body:JSON.stringify({cart})
       })
         .then((res) => res.json())
         .then((data) => data.clientSecret);
     }, []);
   
     const options = {fetchClientSecret};
+    console.log(options)
   
     return (
-      <div id="checkout">
+      <>
+      <div className="cart__container">
         <EmbeddedCheckoutProvider
           stripe={stripePromise}
           options={options}
         >
           <EmbeddedCheckout />
         </EmbeddedCheckoutProvider>
-      </div>
+        </div>
+      </>
     )
   }
 

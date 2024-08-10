@@ -13,6 +13,7 @@ import WholeSale from './pages/WholeSale.jsx';
 import 'react-toastify/dist/ReactToastify.css';
 import Checkout from './components/Checkout.js';
 import { useGetAllFlowersQuery } from './redux/productsSlice.js';
+import Return from './components/Return.js';
 
 function App() {  
   const { data, isLoading, isError } = useGetAllFlowersQuery()
@@ -37,6 +38,7 @@ function App() {
         <Route path='/aboutus' element={<AboutUs />} />
         <Route path='/wholesale' element={<WholeSale />} />
         <Route path='/checkout' element={<Checkout />} />
+        <Route path='/return' element={<Return />} />
       </Routes>}
       </div>
       </div>

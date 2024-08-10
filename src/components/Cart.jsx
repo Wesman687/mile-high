@@ -1,25 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import EmptyCart from "../assetts/empty_cart.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { flower } from "../assetts/Assets";
 import "./Cart.css";
 import { useDispatch, useSelector } from "react-redux";
-import { changeQuantity, removeItem, totalQuantity } from "../redux/cartSlice";
+import { changeQuantity, getPrice, removeItem, totalQuantity } from "../redux/cartSlice";
 
 const Cart = ({flowerArray, loading}) => {
-  const [totalPrice, setTotal] = useState(0)
+  const totalPrice = useSelector((state) => state.cart.totalPrice)
   const cart = useSelector((state) => state.cart.cart)
+  const navigate = useNavigate()
   const dispatch = useDispatch()
-  const total = () => {
-    let price = 0;
-    cart.forEach((item) => {
-      price += +(item.basePrice * item.quantity).toFixed(2);
-    });
-    setTotal(price)
-  };
   useEffect(()=>{
-    total()
-    console.log(cart)
+    dispatch(getPrice())
   },[])
   return (
     <div className="cart__container">
@@ -60,6 +53,7 @@ const Cart = ({flowerArray, loading}) => {
                           onChange={(event) =>{
                             dispatch(changeQuantity({id: items.id, quantity:event.target.value}))                          
                             dispatch(totalQuantity())
+                            dispatch(getPrice())
 
                           }}
                           className="cart__input"
@@ -69,6 +63,7 @@ const Cart = ({flowerArray, loading}) => {
                           onClick={() => {
                             dispatch(removeItem({id: items.id}))                          
                             dispatch(totalQuantity())
+                            dispatch(getPrice())
                           }}
                         >
                           Remove
@@ -109,11 +104,9 @@ const Cart = ({flowerArray, loading}) => {
               <span>Total</span>
               <span>${(totalPrice + totalPrice * 0.1).toFixed(2)}</span>
             </div>
-            <form action="/create-checkout-session" method="POST">
-              <button className="btn btn__checkout click">
+              <button onClick={()=>navigate('/checkout')} className="btn btn__checkout click">
                 Proceed to checkout
               </button>
-            </form>
           </div>
         )}
       </div>

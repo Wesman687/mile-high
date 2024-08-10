@@ -5,16 +5,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import { addCart, totalQuantity } from "../redux/cartSlice";
 
-const ProductDisplay = ({flowerArray, loading}) => {
+const ProductDisplay = ({ flowerArray, loading }) => {
   const [amount, setAmount] = useState(1);
   const [option, setOption] = useState("Ounce");
   const [price, setPrice] = useState(0);
-  const [basePrice, setBase] = useState(0);  
-  const dispatch = useDispatch()
+  const [basePrice, setBase] = useState(0);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   let id = useParams();
   id = id.index;
-  const cart = useSelector((state)=> state.cart.cart)
+  const user = useSelector((state) => state.user);
+  const cart = useSelector((state) => state.cart.cart);
+  console.log(flowerArray);
 
   function increaseAmount() {
     setAmount(amount + 1);
@@ -23,7 +25,7 @@ const ProductDisplay = ({flowerArray, loading}) => {
   function decreaseAmount() {
     if (amount === 1) {
       setAmount(0);
-      setPrice(0)
+      setPrice(0);
     } else if (amount > 0) {
       setAmount(amount - 1);
       getPrice(option, amount - 1);
@@ -33,18 +35,33 @@ const ProductDisplay = ({flowerArray, loading}) => {
     return cart.find((product) => product.id === id);
   }
   function cartButton() {
-    if (!price) {
-      dispatch(addCart(
-        id,
-        amount,
-        option,
-        flowerArray[id.price]
-      ));
+    if (user.uid) {
+      dispatch(
+        addCart({
+          id: id,
+          amount: amount,
+          option: option,
+          price: price,
+          basePrice: basePrice,
+          name: flowerArray[id].title,
+          uid: user.uid,
+        })
+      );
     } else {
-      dispatch(addCart({id, amount, option, price, basePrice }));
-      dispatch(totalQuantity())
-      navigate("/cart");
+      dispatch(
+        addCart({
+          id: id,
+          amount: amount,
+          option: option,
+          price: price,
+          basePrice: basePrice,
+          name: flowerArray[id].title,
+          uid: 'AX0e1T7UxYZYo5Iy4OLOK3qIDyb2',
+        })
+      );
     }
+    dispatch(totalQuantity());
+    navigate("/cart");
   }
   function optionSet(event) {
     event.preventDefault();
@@ -104,8 +121,8 @@ const ProductDisplay = ({flowerArray, loading}) => {
                       <option value="Half">Half Ounce</option>
                       <option value="Quarter">Quarter</option>
                     </select>
-                      <span className="display__price">{`$${price}`}</span>
-                   
+                    <span className="display__price">{`$${price}`}</span>
+
                     <div className="amount">
                       <span className="amount__text">Quantity:</span>
                       <div className="amount__button">

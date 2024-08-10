@@ -1,7 +1,7 @@
 import React from 'react'
 import './Sidebar.css'
 import logo from '../assetts/THCA.webp'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
   return (
