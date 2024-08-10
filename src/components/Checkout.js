@@ -12,7 +12,7 @@ const Checkout = () => {
     const cart = useSelector((state) => state.cart.cart)
     const fetchClientSecret = useCallback(() => {
       // Create a Checkout Session
-      return fetch("https://mile-high-admin-993a46636778.herokuapp.com/create-checkout-session", {
+      return fetch("https://milehighserv.onrender.com/create-checkout-session", {
         headers: {
             'Accept' : 'application/json',
             'Content-Type': 'application/json'

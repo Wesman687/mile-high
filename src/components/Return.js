@@ -14,7 +14,7 @@ const Return = () => {
     const urlParams = new URLSearchParams(queryString);
     const sessionId = urlParams.get("session_id");
     console.log("return");
-    fetch(`https://mile-high-admin-993a46636778.herokuapp.com/session-status?session_id=${sessionId}`)
+    fetch(`https://milehighserv.onrender.com/session-status?session_id=${sessionId}`)
       .then((res) => res.json())
       .then((data) => {
         setStatus(data.status);
