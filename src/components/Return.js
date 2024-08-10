@@ -46,7 +46,7 @@ const Return = () => {
               <p className="return__paragraph">
                 We appreciate your business! A confirmation email will be sent
                 to {customerEmail}. If you have any questions, please email{" "}
-                <a href="mailto:orders@example.com">orders@example.com</a>.
+                <a href="mailto:orders@example.com">Milehighhempco@google.com</a>.
               </p>
             </div>
           </div>

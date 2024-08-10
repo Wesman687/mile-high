@@ -55,7 +55,7 @@ const cartSlice = createSlice({
     getPrice: (state) => {
         let price = 0;
         state.cart.forEach((item) => {
-        price += +(item.basePrice * item.quantity).toFixed(2);
+        price += +(+item.basePrice * +item.quantity).toFixed(2);
     });
     state.totalPrice = price
     }

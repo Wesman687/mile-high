@@ -16,8 +16,7 @@ import { useGetAllFlowersQuery } from './redux/productsSlice.js';
 import Return from './components/Return.js';
 
 function App() {  
-  const { data, isLoading, isError } = useGetAllFlowersQuery()
-  
+  const { data, isLoading } = useGetAllFlowersQuery()
   return (
     <Router>
     <div className="App">      

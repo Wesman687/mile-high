@@ -5,7 +5,7 @@ import {
     EmbeddedCheckout
   } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import { useCallback, useContext } from 'react';
+import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 const Checkout = () => {
@@ -25,7 +25,6 @@ const Checkout = () => {
     }, []);
   
     const options = {fetchClientSecret};
-    console.log(options)
   
     return (
       <>

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import Login from "../authorization/Login";
 import { useSelector } from "react-redux";
+import Contact from "./Contact";
 
 const Nav = ({}) => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Nav = ({}) => {
           <li onClick={() => navigate("/")} className="home link click">
             Home
           </li>
-          <li className="link contact">Contact Us</li>
+          <Contact />
           <Login />
 
           <Link to="/cart">

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
 import EmptyCart from "../assetts/empty_cart.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { flower } from "../assetts/Assets";
 import "./Cart.css";
 import { useDispatch, useSelector } from "react-redux";
 import { changeQuantity, getPrice, removeItem, totalQuantity } from "../redux/cartSlice";
+import { useEffect } from "react";
 
 const Cart = ({flowerArray, loading}) => {
   const totalPrice = useSelector((state) => state.cart.totalPrice)
@@ -12,7 +12,8 @@ const Cart = ({flowerArray, loading}) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   useEffect(()=>{
-    dispatch(getPrice())
+    const subscribe = dispatch(getPrice())
+    return subscribe
   },[])
   return (
     <div className="cart__container">
