@@ -18,7 +18,8 @@ const Contact = () => {
         setTimeout(() => {
           setSendStatus({ ...sendStatus, processed: false })
         }, 3000)
-    const sendEmail = async () => {   
+    const sendEmail = async (e) => {   
+        e.preventDefault()
         const serviceid = process.env.REACT_APP_SERVICE_ID
         const templateid = process.env.REACT_APP_TEMPLATE_ID
         const publicKey = process.env.REACT_APP_PUBLIC_KEY
@@ -104,7 +105,7 @@ const Contact = () => {
                 
                 
                 </form>
-                <button className='contact__submit' onClick={sendEmail}>{isSending ? 'Sending Message' : 'Send Message'}</button>
+                <button className='contact__submit' onClick={(e)=>sendEmail(e)}>{isSending ? 'Sending Message' : 'Send Message'}</button>
               </div>
             </div>
         )}
