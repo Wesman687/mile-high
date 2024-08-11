@@ -12,8 +12,8 @@ const Cart = ({flowerArray, loading}) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   useEffect(()=>{
-    const subscribe = dispatch(getPrice())
-    return subscribe
+    dispatch(getPrice())
+   
   },[])
   return (
     <div className="cart__container">

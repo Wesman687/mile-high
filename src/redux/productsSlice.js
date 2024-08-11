@@ -1,4 +1,3 @@
-import { create } from '@mui/material/styles/createTransitions'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const productsApi = createApi({
