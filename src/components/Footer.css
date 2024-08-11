@@ -1,0 +1,39 @@
+.footer__container {
+    width: 100vw;
+    height: 15vh;
+    position: absolute;
+    bottom: 0;
+    font-size: 32px;
+    color: white;
+}
+.shopping__cart:hover {
+    animation: rotate 1800ms infinite ease;
+}
+.shopping__cart {
+    
+    border: 2px solid green;
+    border-radius: 50%;
+    padding: 20px;
+    background-color: green;
+    position: fixed;
+    right: 5%;
+    bottom: 2;
+    box-shadow: rgba(255, 255, 255, 0.288) 0px 0px 40px 0.2px;
+}
+
+
+.cart__length {
+    background-color: red;
+    color: white;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    bottom: 9%;
+    right: 6%;
+  }

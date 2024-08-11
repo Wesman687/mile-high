@@ -1,7 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Nav from './components/Nav';
-import Sidebar from './components/Sidebar';
 import Landing from './pages/Landing.jsx';
 import ProductDisplay from './pages/ProductDisplay.jsx';
 import Cart from './components/Cart.jsx';
@@ -14,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Checkout from './components/Checkout.js';
 import { useGetAllFlowersQuery } from './redux/productsSlice.js';
 import Return from './components/Return.js';
+import Footer from './components/Footer.jsx';
 
 function App() {  
   const { data, isLoading } = useGetAllFlowersQuery()
@@ -22,11 +22,8 @@ function App() {
     <div className="App">      
       <Nav />
       
-      <div className='components'>
-      <Sidebar />
       
       <div className='main'>
-      <div className='filler'></div>
       {data && <Routes>
         <Route path='/' key="_index"  element={<Landing  flowerArray={data.flowers} loading={isLoading} /> }/>
         <Route path='/product/:index' key="_index" element={<ProductDisplay flowerArray={data.flowers} loading={isLoading} />}/> 
@@ -40,7 +37,8 @@ function App() {
         <Route path='/return' element={<Return />} />
       </Routes>}
       </div>
-      </div>
+      
+      <Footer />
       
     </div>
     </Router>

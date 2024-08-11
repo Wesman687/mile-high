@@ -1,0 +1,19 @@
+.settings {
+    height: 80vh;
+}
+.settings_form {
+    height: 100%;
+}
+.disable__submit {    
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: 16px;
+    background: #6e0409;
+    color: rgb(128, 124, 124);
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 12px 0 0 0;
+    cursor: pointer;
+}

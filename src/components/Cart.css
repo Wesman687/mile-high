@@ -6,7 +6,12 @@
 */
 .cart__container {
     padding: 24px 0;
-    width: 85vw;
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    
+    background-color: #0d0b24;
 }
 
 .cart__row {
@@ -14,6 +19,9 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+  background-color: white;
+  border-radius: 12px;
+  border: 4px solid #7342d6;
 }
 .cart__header {
     background-color: #7342d6;

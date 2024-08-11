@@ -1,14 +1,21 @@
 import "./Nav.css";
 import { Link, useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import Login from "../authorization/Login";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Contact from "./Contact";
+import { auth } from "../firebase/init";
+import { signOutUser } from "../redux/userSlice";
+import { signOut } from "firebase/auth";
+import AccountSettings from "./AccountSettings";
 
-const Nav = ({}) => {
+const Nav = () => {
   const navigate = useNavigate();
-  const numberOfItems = useSelector((state) => state.cart.totalQuantity)
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  async function logOut() {
+    await signOut(auth);
+    dispatch(signOutUser());
+  }
   return (
     <div className="nav__container">
       <div className="logo__container">
@@ -16,26 +23,53 @@ const Nav = ({}) => {
       </div>
 
       <div className="nav__wrapper">
-        <ul className="links">
-          <li onClick={() => navigate("/")} className="home link click">
-            Home
-          </li>
-          <Contact />
-          <Login />
-
-          <Link to="/cart">
-            <li className="nav__icon">
-              <FontAwesomeIcon
-                icon={faShoppingCart}
-                className="shopping__cart"
-              />
-              {numberOfItems > 0 && (
-                <span className="cart__length">{numberOfItems}</span>
-              )}
-            </li>
-          </Link>
-        </ul>
+          
+          
       </div>
+      
+      <p onClick={() => navigate("/")} className="home nav_link click">
+            Home
+          </p>
+      <div className="about nav_link">
+        
+            <p>About</p>
+            <div className="about_dropdown">
+              <Link to="/wholesale">
+                <p className="sb__link">WHOLESALE</p>
+              </Link>
+              <Link to="/aboutus">
+                <p className="  sb__link">About Us</p>
+              </Link>
+              <Link to="/benefits">
+                <p className="  sb__link">THCA Benefits</p>
+              </Link>
+              <Link to="/THCA">
+                <p className=" sb__link">WHAT IS THCA?</p>
+              </Link>
+              <Link to="/shipstates">
+                <p className="sb__link ">Ship States</p>
+              </Link>
+            </div>
+          </div>
+          <Contact />
+          <div className="nav_link admin">
+            {user.firstName ? (
+              <div className="admin">
+              <p className="admin__link admin">{user.firstName}</p>
+              </div>
+            ) : (
+              <>
+                <Login />
+              </>
+            )}
+
+            <div className="admin_dropdown ">
+              {(user.email) && <><h1>Account</h1>
+              <AccountSettings />
+              <p className="sb__link">Orders</p>
+              <p className="sb__link " onClick={() => logOut()}>Log Out</p></>}
+            </div>
+          </div>
     </div>
   );
 };

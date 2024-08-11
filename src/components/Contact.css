@@ -13,6 +13,12 @@
 .contact-form, .contact-form input {
     width: 100% !important;
 }
+.contact_link {
+    padding-right: 32px;
+}
+.contact_link:hover {
+    color: rgba(0, 255, 0, 0.712);
+}
 .times__button {
     position: absolute;
     font-size: 32px;

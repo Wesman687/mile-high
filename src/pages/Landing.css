@@ -1,6 +1,7 @@
 .landing__container {
     background-color: #0d0b24;
-    width: 85vw;
+    width: 100vw;
+    min-height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;

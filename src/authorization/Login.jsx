@@ -5,23 +5,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "@mui/material/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { closeLoginModal, openLoginModal } from "../redux/modalSlice.js";
-import {
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signOut,
+import {  
+  onAuthStateChanged, createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,  
 } from "firebase/auth";
-import { setUser, signOutUser } from "../redux/userSlice.js";
-import { addDoc, collection } from "firebase/firestore";
+import { setUser } from "../redux/userSlice.js";
+import { addDoc, collection, where, getDocs, query } from "firebase/firestore";
 import { toast } from "react-toastify";
 
 const Login = () => {
   const [signState, setSignState] = useState("Sign In");
-  const [loginState, setLoginState] = useState("login");
-  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("")
+  const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zip, setZip] = useState("");
   const [phone, setPhone] = useState("");
@@ -35,14 +34,16 @@ const Login = () => {
       auth,
       email,
       password
-    );
-    dispatch(closeLoginModal());
+    )
     const res = userCredentials.user;
+    dispatch(closeLoginModal());
     const docRef = await addDoc(collection(db, `user`), {
       uid: res.uid,
-      name: name,
+      firstName: firstName,
+      lastName: lastName,
       authProvider: "local",
       email: email,
+      city: city,
       address: address,
       state: state,
       zip: zip,
@@ -66,46 +67,47 @@ const Login = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (!currentUser) {
-        setLoginState("login");
         return;
       }
+      const userRef = await query(collection(db, "user"), where('uid', '==', currentUser.uid))
+      const data  = await getDocs(userRef)
+      if (data.empty) {
+        console.log("nothing", data.docs, currentUser.uid)
+      }
+      const userInfo = data.docs.map(doc => doc.data())[0]
       dispatch(
         setUser({
-          name: currentUser.displayName,
-          email: currentUser.email,
-          uid: currentUser.uid,
+          firstName: userInfo.firstName,
+          lastName: userInfo.lastName,
+          email: userInfo.email,
+          uid: userInfo.uid,
+          city: userInfo.city,
+          address: userInfo.address,
+          state: userInfo.state,
+          zip: userInfo.zip,
+          phone: userInfo.phone,
         })
       );
-      setLoginState("logout");
     });
 
     return unsubscribe;
-  }, []);
-  async function logOut() {
-    await signOut(auth);
-    setLoginState("login");
-    dispatch(signOutUser());
-  }
+  }, []);  
 
   return (
     <>
-      {loginState === "login" ? (
-        <button
+      
+        <p className="nav_link admin__link "
           onClick={() => dispatch(openLoginModal())}
-          className="login__button"
         >
           Log In
-        </button>
-      ) : (
-        <button onClick={() => logOut()} className="login__button">
-          Log Out
-        </button>
-      )}
+        </p>
+      
       <Modal
         open={isOpen}
         onClose={() => dispatch(closeLoginModal())}
         className="login__modal"
       >
+        <div className="login__container">
         {loading ? (
           <div className="login-spinner">
             <FontAwesomeIcon icon="fas fa-spinner"></FontAwesomeIcon>
@@ -119,14 +121,24 @@ const Login = () => {
               <h1>{signState}</h1>
               <form>
                 {signState === "Sign Up" ? (
+                  <>
                   <input
-                    value={name}
+                    value={firstName}
                     onChange={(event) => {
-                      setName(event.target.value);
+                      setFirstName(event.target.value);
                     }}
                     type="text"
-                    placeholder="Your Name"
+                    placeholder="First Name"
                   />
+                  <input
+                    value={lastName}
+                    onChange={(event) => {
+                      setLastName(event.target.value);
+                    }}
+                    type="text"
+                    placeholder="Last Name"
+                  />
+                  </>
                 ) : (
                   <></>
                 )}
@@ -172,6 +184,14 @@ const Login = () => {
                       }}
                       type="zip"
                       placeholder="Zip"
+                    />
+                    <input
+                      value={city}
+                      onChange={(event) => {
+                        setCity(event.target.value);
+                      }}
+                      type="city"
+                      placeholder="City"
                     />
                     <input
                       value={state}
@@ -227,7 +247,9 @@ const Login = () => {
               </div>
             </div>
           </div>
+          
         )}
+        </div>
       </Modal>
     </>
   );

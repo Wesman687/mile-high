@@ -3,7 +3,7 @@
 "https://cdn11.bigcommerce.com/s-qsp8zkqq0s/images/stencil/original/image-manager/aaa-weed-kitta-long.jpg?t=1720920697"
     );
     background-size: cover;
-    height: 20vh;
+    height: 10vh;
     display: flex;
     align-items: center;
     display: flex;
@@ -34,10 +34,10 @@
     position: relative;
     z-index: 2;
     color: white;
-    font-size: 28px;
+    font-size: 16px;
     margin-left: 12px;
-    border: 18px solid rgba(0, 255, 0, 0.712);
-    border-radius: 24px;
+    border: 10px solid rgba(0, 255, 0, 0.712);
+    border-radius: 6px;
     text-align: center;
 }
 
@@ -76,21 +76,65 @@
 .nav__icon:hover {
     color: rgba(0, 255, 0, 0.712);
 }
-.cart__length {
-    background-color: red;
-    color: white;
-    width: 18px;
-    height: 18px;
-    font-size: 12px;
-    display: flex;
+.about_dropdown, .admin_dropdown {
+    position: absolute;
+    width: max-content;
+    background: #191919;
+    padding: 18px 22px;
+    border-radius: 2px;
+    z-index: 1;
+    display: none;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    position: absolute;
-    bottom: 4px;
-    right: -4px;
-    pointer-events: none;
-  }
+
+}
+.admin_dropdown p {
+    font-size: 26px;
+}
+.admin_dropdown h1 {
+    text-decoration: underline;
+    font-size: 28px;
+    margin-bottom: 48px;
+    font-weight: bold;
+}
+.admin {
+    margin-right: 48px;
+}
+.nav_link p:hover {    
+    color: rgba(0, 255, 0, 0.712);
+}
+.about, .home {
+    padding-right: 32px;
+}
+
+.about_dropdown p {
+    font-size: 24px;
+    cursor: pointer;
+    padding: 18px 22px;
+}
+.nav_link {
+    cursor: pointer;
+    color: white;
+    position: relative;
+    font-size: 32px;
+    text-wrap: nowrap;
+    padding-right: 32px;
+}
+.admin:hover .admin_dropdown {
+    display: block;
+    color: rgba(0, 255, 0, 0.712);
+}
+
+.about:hover .about_dropdown {
+    display: block;
+}
+.sb__link {
+    padding-bottom: 18px;
+}
+
+.sb__link:hover {
+    color: rgba(0, 255, 0, 0.712);
+}
 
   @media (max-width: 768px) {
     .logo__text {

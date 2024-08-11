@@ -62,7 +62,7 @@ const Contact = () => {
     
   return (
     <>
-        <button className='contact__button' onClick={()=>dispatch(openContactModal())}>Contact Us</button>
+        <p className="nav_link contact_link" onClick={()=>dispatch(openContactModal())}>Contact Us</p>
         <Modal
         open={isOpen}
         onClose={() => dispatch(closeContactModal())}
