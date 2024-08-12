@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import { addCart, totalQuantity } from "../redux/cartSlice";
+ 
 
 const ProductDisplay = ({ flowerArray, loading }) => {
   const [amount, setAmount] = useState(1);
@@ -16,8 +17,12 @@ const ProductDisplay = ({ flowerArray, loading }) => {
   id = id.index;
   const user = useSelector((state) => state.user);
   const cart = useSelector((state) => state.cart.cart);
-  console.log(flowerArray);
-
+  function isCrumble(){
+    return flowerArray[id].name.search("Crumble") === 0
+  }
+  function isResin(){
+    return flowerArray[id].name.search("Resin") === 0
+  }
   function increaseAmount() {
     setAmount(amount + 1);
     getPrice(option, amount + 1);
@@ -71,6 +76,36 @@ const ProductDisplay = ({ flowerArray, loading }) => {
   function getPrice(value, quantity) {
     let itemPrice;
     let base;
+    if (isResin()) {
+      if (value === "Ounce") {
+        itemPrice = 225
+        priceSet(itemPrice * quantity, itemPrice)
+      }
+      else if (value === "10 grams") {
+        itemPrice = 120
+        priceSet(itemPrice * quantity, itemPrice)
+      }
+      else {
+        itemPrice = 30
+        priceSet(itemPrice * quantity, itemPrice)
+      }
+      return itemPrice
+    }
+    if (isCrumble()) {
+      if (value === "Ounce") {
+        itemPrice = 300
+        priceSet(itemPrice * quantity, itemPrice)
+      }
+      else if (value === "10 grams") {
+        itemPrice = 120
+        priceSet(itemPrice * quantity, itemPrice)
+      }
+      else {
+        itemPrice = 20
+        priceSet(itemPrice * quantity, itemPrice)
+      }
+      return itemPrice
+    }
     if (value === "Ounce") {
       itemPrice = +flowerArray[id].price * quantity;
       base = +flowerArray[id].price;
@@ -81,9 +116,13 @@ const ProductDisplay = ({ flowerArray, loading }) => {
       itemPrice = (+flowerArray[id].price / 4) * quantity;
       base = +flowerArray[id].price / 4;
     }
-    setPrice(itemPrice);
-    setBase(base);
+    priceSet(itemPrice, base)
     return itemPrice;
+  }
+  function priceSet(price, base) {
+    setPrice(price)
+    setBase(base)
+    console.log(cart)
   }
   useEffect(() => {
     getPrice("Ounce", 1);
@@ -107,7 +146,22 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                   />
                   <div className="pd__info">
                     <h1 className="pd__title">{flowerArray[id].title}</h1>
+                    {(isResin() || isCrumble()) ? 
                     <select
+                    defaultValue="Ounce"
+                    className="pd__options"
+                    name=""
+                    id="size"
+                    onChange={(event) => optionSet(event)}
+                  >
+                    <option value=""></option>
+                    <option value="Ounce" data-default>
+                      Ounce
+                    </option>
+                    <option value="10 grams">10 grams</option>
+                    <option value="2 grams">2 grams</option>
+                  </select>
+                    : <select
                       defaultValue="Ounce"
                       className="pd__options"
                       name=""
@@ -120,7 +174,7 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                       </option>
                       <option value="Half">Half Ounce</option>
                       <option value="Quarter">Quarter</option>
-                    </select>
+                    </select>}
                     <span className="display__price">{`$${price}`}</span>
 
                     <div className="amount">
@@ -165,8 +219,25 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                       </button>
                     )}
                   </div>
+                  <div className="desc__container">
+                  {isResin() ?  <>
+                  <h1 className="pd__crumble">THCa Live Resin is a cannabis concentrate that preserves the raw, fresh flavors and aromas of the cannabis plant.</h1>
+                     <p className="pd__resin">Unlike other concentrates, Live Resin is made from freshly harvest ed hemp plants that haven't been cured or dried. This distinction is crucial because it maintains the rich terpene profile and peak cannabinoid content that often gets lost in the drying and curing process.</p>
+                      <p className="pd__resin">THCa Live Resin is prized not only for its potent effects but also for its ability to deliver a more powerful experience than concentrates derived from the cured plant material.</p>
+                  </>
+                  : 
+                  <h1 className="pd__desc">{(flowerArray[id].desc.replace(/(?:\\[rn]|[\r\n])/g," "))}</h1>}
+                  {isCrumble() && <>
+                  <h1 className="pd__crumble">How Long does crumble take to hit</h1>
+                  <p>Once you place the crumble on your dab rig and take the first toke, within a few seconds to a minute it will hit you.</p>
+                  <h1 className="pd__crumble">How to consume Crumble</h1>
+                  <p>The most common way to consume crumble is with a dab rig, but you could certainly vaporize it, or even ingest it in a food product if you wanted to.</p>
+                  <br />
+                  <p>We find that our customers report back the best results and experience is dabbing it, but to each their own.</p>
+                  </>}
+                  </div>
+                  
                 </div>
-                <h1 className="pd__desc">{flowerArray[id].desc}</h1>
               </>
             )}
             <div className="pd__thumb--window">

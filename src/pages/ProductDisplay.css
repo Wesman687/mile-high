@@ -85,9 +85,26 @@
 }
 .pd__desc {
     font-size: 16px;
-    padding-top: 12px;
+    padding: 24px;
     line-height: 1.5;
-    width: 70%;
+    text-align: center;
+}
+.desc__container {
+    flex-direction: column;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-left: 24px;
+}
+.pd__resin {
+    padding-top: 32px;
+    line-height: 1.5;
+}
+.pd__crumble {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 12px 0;
+    
 }
 .picture__options{
     width: 30%;

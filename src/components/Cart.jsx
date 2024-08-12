@@ -1,6 +1,5 @@
 import EmptyCart from "../assetts/empty_cart.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { flower } from "../assetts/Assets";
 import "./Cart.css";
 import { useDispatch, useSelector } from "react-redux";
 import { changeQuantity, getPrice, removeItem, totalQuantity } from "../redux/cartSlice";
@@ -11,6 +10,7 @@ const Cart = ({flowerArray, loading}) => {
   const cart = useSelector((state) => state.cart.cart)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  console.log(cart, flowerArray)
   useEffect(()=>{
     dispatch(getPrice())
    
@@ -36,7 +36,7 @@ const Cart = ({flowerArray, loading}) => {
                     <div className="box__title">
                       <div className="cart__img--title">
                         <img
-                          src={flower[items.id].image}
+                          src={flowerArray[items.id].image}
                           alt=""
                           className="cart__item--img"
                         />
