@@ -1,5 +1,5 @@
 import EmptyCart from "../assetts/empty_cart.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Cart.css";
 import { useDispatch, useSelector } from "react-redux";
 import { changeQuantity, getPrice, removeItem, totalQuantity } from "../redux/cartSlice";
@@ -10,7 +10,6 @@ const Cart = ({flowerArray, loading}) => {
   const cart = useSelector((state) => state.cart.cart)
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  console.log(cart, flowerArray)
   useEffect(()=>{
     dispatch(getPrice())
    
@@ -84,10 +83,8 @@ const Cart = ({flowerArray, loading}) => {
           {cart.length === 0 && (
             <div className="cart__empty">
               <img src={EmptyCart} alt="" className="cart__empty--img" />
-              <h2>You don't have any items in your cart!</h2>
-              <Link to="/">
-                <button className="btn cart__home">Home</button>
-              </Link>
+              <h2 className="cart__text">You don't have any items in your cart!</h2>              
+                <button className="cart__home" onClick={()=> navigate('/')}>Home</button>              
             </div>
           )}
         </div>

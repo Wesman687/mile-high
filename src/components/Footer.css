@@ -1,6 +1,6 @@
 .footer__container {
     width: 100vw;
-    height: 15vh;
+    height: 0vh;
     position: absolute;
     bottom: 0;
     font-size: 32px;
@@ -16,8 +16,8 @@
     padding: 20px;
     background-color: green;
     position: fixed;
+    bottom: 8%;
     right: 5%;
-    bottom: 2;
     box-shadow: rgba(255, 255, 255, 0.288) 0px 0px 40px 0.2px;
 }
 

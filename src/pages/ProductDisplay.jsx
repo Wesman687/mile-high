@@ -122,7 +122,6 @@ const ProductDisplay = ({ flowerArray, loading }) => {
   function priceSet(price, base) {
     setPrice(price)
     setBase(base)
-    console.log(cart)
   }
   useEffect(() => {
     getPrice("Ounce", 1);

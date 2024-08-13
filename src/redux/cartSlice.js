@@ -31,7 +31,6 @@ const cartSlice = createSlice({
       state.totalPrice = 0
     },
     changeQuantity: (state, action) => {
-        console.log(action.payload)
       state.cart = state.cart.map((item) =>
         item.id === action.payload.id
           ? {

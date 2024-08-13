@@ -25,7 +25,7 @@ function App() {
       
       <div className='main'>
       {data && <Routes>
-        <Route path='/' key="_index"  element={<Landing  flowerArray={data.flowers} loading={isLoading} /> }/>
+        <Route path='/' element={<Landing  flowerArray={data.flowers} loading={isLoading} /> }/>
         <Route path='/product/:index' key="_index" element={<ProductDisplay flowerArray={data.flowers} loading={isLoading} />}/> 
         <Route path='/cart' element={<Cart flowerArray={data.flowers} loading={isLoading} />} />
         <Route path='/shipstates' element={<ShipStates />} />
