@@ -2,7 +2,12 @@ import EmptyCart from "../assetts/empty_cart.svg";
 import { useNavigate } from "react-router-dom";
 import "./Cart.css";
 import { useDispatch, useSelector } from "react-redux";
-import { changeQuantity, getPrice, removeItem, totalQuantity } from "../redux/cartSlice";
+import {
+  changeQuantity,
+  getPrice,
+  removeItem,
+  totalQuantity,
+} from "../redux/cartSlice";
 import { useEffect } from "react";
 import {
   addDoc,
@@ -14,15 +19,16 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "../firebase/init";
+import { openLoginModal } from "../redux/modalSlice";
 
-const Cart = ({flowerArray, loading}) => {
-  const totalPrice = useSelector((state) => state.cart.totalPrice)
-  const cart = useSelector((state) => state.cart.cart)
-  const user = useSelector((state) => state.user)
-  const wholeCart = useSelector((state) => state.cart)
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  async function addOrder(){
+const Cart = ({ flowerArray, loading }) => {
+  const totalPrice = useSelector((state) => state.cart.totalPrice);
+  const cart = useSelector((state) => state.cart.cart);
+  const user = useSelector((state) => state.user);
+  const wholeCart = useSelector((state) => state.cart);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  async function addOrder() {
     const userRef = await query(
       collection(db, "user"),
       where("uid", "==", user.uid)
@@ -33,18 +39,25 @@ const Cart = ({flowerArray, loading}) => {
       uid: user.uid,
       cart: cart,
       totalQuantity: wholeCart.totalQuantity,
-      totalPrice: wholeCart.totalPrice        
+      totalPrice: wholeCart.totalPrice,
+    };
+
+    const orderDoc = await addDoc(collection(db, "orders"), order);
+  }
+  function performCheckOut(e) {
+    console.log(user);
+    if (user.email) {
+      e.preventDefault();
+      addOrder();
+      navigate("/checkout");
+    } else {
+      dispatch(openLoginModal());
     }
-
-    const orderDoc = await addDoc(collection(db, "orders"), order)
-    
-
   }
 
-  useEffect(()=>{
-    dispatch(getPrice())
-   
-  },[])
+  useEffect(() => {
+    dispatch(getPrice());
+  }, []);
   return (
     <div className="cart__container">
       <div className="cart__row">
@@ -81,20 +94,24 @@ const Cart = ({flowerArray, loading}) => {
                           min={1}
                           max={99}
                           value={items.quantity}
-                          onChange={(event) =>{
-                            dispatch(changeQuantity({id: items.id, quantity:event.target.value}))                          
-                            dispatch(totalQuantity())
-                            dispatch(getPrice())
-
+                          onChange={(event) => {
+                            dispatch(
+                              changeQuantity({
+                                id: items.id,
+                                quantity: event.target.value,
+                              })
+                            );
+                            dispatch(totalQuantity());
+                            dispatch(getPrice());
                           }}
                           className="cart__input"
                         />
                         <button
                           className="cart__book--remove click"
                           onClick={() => {
-                            dispatch(removeItem({id: items.id}))                          
-                            dispatch(totalQuantity())
-                            dispatch(getPrice())
+                            dispatch(removeItem({ id: items.id }));
+                            dispatch(totalQuantity());
+                            dispatch(getPrice());
                           }}
                         >
                           Remove
@@ -114,8 +131,12 @@ const Cart = ({flowerArray, loading}) => {
           {cart.length === 0 && (
             <div className="cart__empty">
               <img src={EmptyCart} alt="" className="cart__empty--img" />
-              <h2 className="cart__text">You don't have any items in your cart!</h2>              
-                <button className="cart__home" onClick={()=> navigate('/')}>Home</button>              
+              <h2 className="cart__text">
+                You don't have any items in your cart!
+              </h2>
+              <button className="cart__home" onClick={() => navigate("/")}>
+                Home
+              </button>
             </div>
           )}
         </div>
@@ -133,13 +154,14 @@ const Cart = ({flowerArray, loading}) => {
               <span>Total</span>
               <span>${(totalPrice + totalPrice * 0.1).toFixed(2)}</span>
             </div>
-            <form action="/create-checkout-session" method="POST">
-              <button onClick={()=>{
-                addOrder()
-                navigate('/checkout')}} className="btn btn__checkout click">
-                Proceed to checkout
-              </button>
-            </form>
+            <button
+              onClick={(e) => {
+                performCheckOut(e);
+              }}
+              className="btn btn__checkout click"
+            >
+              Proceed to checkout
+            </button>
           </div>
         )}
       </div>
