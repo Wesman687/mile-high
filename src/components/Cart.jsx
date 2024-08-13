@@ -4,12 +4,43 @@ import "./Cart.css";
 import { useDispatch, useSelector } from "react-redux";
 import { changeQuantity, getPrice, removeItem, totalQuantity } from "../redux/cartSlice";
 import { useEffect } from "react";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
+import { db } from "../firebase/init";
 
 const Cart = ({flowerArray, loading}) => {
   const totalPrice = useSelector((state) => state.cart.totalPrice)
   const cart = useSelector((state) => state.cart.cart)
+  const user = useSelector((state) => state.user)
+  const wholeCart = useSelector((state) => state.cart)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  async function addOrder(){
+    const userRef = await query(
+      collection(db, "user"),
+      where("uid", "==", user.uid)
+    );
+    const data = await getDocs(userRef);
+    const docRef = doc(db, "user", data.docs[0].id);
+    const order = {
+      uid: user.uid,
+      cart: cart,
+      totalQuantity: wholeCart.totalQuantity,
+      totalPrice: wholeCart.totalPrice        
+    }
+
+    const orderDoc = await addDoc(collection(db, "orders"), order)
+    
+
+  }
+
   useEffect(()=>{
     dispatch(getPrice())
    
@@ -103,7 +134,9 @@ const Cart = ({flowerArray, loading}) => {
               <span>${(totalPrice + totalPrice * 0.1).toFixed(2)}</span>
             </div>
             <form action="/create-checkout-session" method="POST">
-              <button onClick={()=>navigate('/checkout')} className="btn btn__checkout click">
+              <button onClick={()=>{
+                addOrder()
+                navigate('/checkout')}} className="btn btn__checkout click">
                 Proceed to checkout
               </button>
             </form>

@@ -1,7 +1,5 @@
 
 import { createSlice } from '@reduxjs/toolkit'
-import { arrayUnion, collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore';
-import { db } from '../firebase/init';
 
 const initialState = {
   firstName: null,
@@ -50,23 +48,7 @@ const userSlice = createSlice({
       state.phone = null
       state.stateid = null
     },
-    addOrder: async (state, action) => {
-      console.log("adding order". action.payload.cart)
-      const userRef = await query(
-        collection(db, "user"),
-        where("uid", "==", state.uid)
-      );
-      const data = await getDocs(userRef);
-      const docRef = doc(db, "user", data.docs[0].id);
-      const order = {
-        cart: action.payload.cart.cart,
-        totalQuantity: action.payload.cart.totalQuantity,
-        totalPrice: action.payload.cart.totalPrice        
-      }
-      await updateDoc(docRef,{
-        orders: arrayUnion(order)
-      } );
-    }
+
   }
 });
 
