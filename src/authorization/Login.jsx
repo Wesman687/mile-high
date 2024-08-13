@@ -63,7 +63,7 @@ const Login = () => {
       )
       res = userCredentials.user;
     } catch (error) {
-      alert("Unable to create Account: ", error)
+      alert(error.code.split('/')[1].split('-').join(" "))
       setLoading(false)
       return
     }
@@ -91,8 +91,7 @@ const Login = () => {
         await signInWithEmailAndPassword(auth, email, password)
 
     } catch (error) {
-        console.log(error)
-        toast.error(error.code.split('/')[1].split('-').join(" "))
+        alert.error(error.code.split('/')[1].split('-').join(" "))
 
     }
     setLoading(false)

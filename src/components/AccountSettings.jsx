@@ -40,7 +40,10 @@ const AccountSettings = () => {
       user.firstName === newFirstName &&
       user.lastName === newLastName &&
       user.phone === newPhone &&
-      user.address === newAddress
+      user.address === newAddress &&
+      user.zip === newZip &&
+      user.city === newCity &&
+      user.state === newState
     );
   };
   useEffect(() => {
@@ -71,30 +74,36 @@ const AccountSettings = () => {
     e.preventDefault();
     e.stopPropagation()
     setLoading(true);
-    const userRef = await query(
-      collection(db, "user"),
-      where("uid", "==", user.uid)
-    );
-    const data = await getDocs(userRef);
-    if (data.empty) {
-      console.log("nothing", data.docs, user.uid);
+    try {
+      const userRef = await query(
+        collection(db, "user"),
+        where("uid", "==", user.uid)
+      );
+      const data = await getDocs(userRef);
+      if (data.empty) {
+        console.log("nothing", data.docs, user.uid);
+      }
+      const userInfo = data.docs.map(doc => doc.data())[0]
+      const userData = {
+        firstName: newFirstName,
+        lastName: newLastName,
+        city: newCity,
+        address: newAddress,
+        state: newState,
+        zip: newZip,
+        phone: newPhone,
+        stateid: newStateid,
+        email: userInfo.email,
+        uid: userInfo.uid
+      };
+      const docRef = doc(db, "user", data.docs[0].id);
+      await updateDoc(docRef, userData);
+      dispatch(setUser(userData));
+      
+    } catch (error) {
+      alert("Something went wrong with updating data, check your connection and try again.")
     }
-    const userInfo = data.docs.map(doc => doc.data())[0]
-    const userData = {
-      firstName: newFirstName,
-      lastName: newLastName,
-      city: newCity,
-      address: newAddress,
-      state: newState,
-      zip: newZip,
-      phone: newPhone,
-      stateid: newStateid,
-      email: userInfo.email,
-      uid: userInfo.uid
-    };
-    const docRef = doc(db, "user", data.docs[0].id);
-    await updateDoc(docRef, userData);
-    dispatch(setUser(userData));
+    
     setLoading(false);
     dispatch(closeSettingModal());
   };

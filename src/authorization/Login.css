@@ -18,6 +18,9 @@
     border: none;
     cursor: pointer;
 }
+.login__x:hover {
+    color: #e50914;
+}
 .login__modal {
     position: relative;
     width: 100%;

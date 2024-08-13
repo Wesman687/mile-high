@@ -15,7 +15,6 @@ const ProductDisplay = ({ flowerArray, loading }) => {
   const navigate = useNavigate();
   let id = useParams();
   id = id.index;
-  console.log("product_display", flowerArray)
   const user = useSelector((state) => state.user);
   const cart = useSelector((state) => state.cart.cart);
   function isCrumble(){
