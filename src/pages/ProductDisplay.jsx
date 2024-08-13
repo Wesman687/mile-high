@@ -15,6 +15,7 @@ const ProductDisplay = ({ flowerArray, loading }) => {
   const navigate = useNavigate();
   let id = useParams();
   id = id.index;
+  console.log("product_display", flowerArray)
   const user = useSelector((state) => state.user);
   const cart = useSelector((state) => state.cart.cart);
   function isCrumble(){
@@ -75,48 +76,31 @@ const ProductDisplay = ({ flowerArray, loading }) => {
   }
   function getPrice(value, quantity) {
     let itemPrice;
-    let base;
-    if (isResin()) {
+    let base;    
+    if (flowerArray[id].category === "Resin/Crumble") {
       if (value === "Ounce") {
-        itemPrice = 225
-        priceSet(itemPrice * quantity, itemPrice)
+        itemPrice = +flowerArray[id].prices[2]
       }
       else if (value === "10 grams") {
-        itemPrice = 120
-        priceSet(itemPrice * quantity, itemPrice)
+        itemPrice = +flowerArray[id].prices[1]
       }
       else {
-        itemPrice = 30
-        priceSet(itemPrice * quantity, itemPrice)
+        itemPrice = +flowerArray[id].prices[0]
       }
-      return itemPrice
-    }
-    if (isCrumble()) {
-      if (value === "Ounce") {
-        itemPrice = 300
-        priceSet(itemPrice * quantity, itemPrice)
-      }
-      else if (value === "10 grams") {
-        itemPrice = 120
-        priceSet(itemPrice * quantity, itemPrice)
-      }
-      else {
-        itemPrice = 20
-        priceSet(itemPrice * quantity, itemPrice)
-      }
+      priceSet(itemPrice * quantity, itemPrice)
       return itemPrice
     }
     if (value === "Ounce") {
-      itemPrice = +flowerArray[id].price * quantity;
-      base = +flowerArray[id].price;
+      itemPrice = +flowerArray[id].prices[2];
+      base = +flowerArray[id].prices[2];
     } else if (value === "Half") {
-      itemPrice = (+flowerArray[id].price / 2) * quantity;
-      base = +flowerArray[id].price / 2;
+      itemPrice = +flowerArray[id].prices[1];
+      base = +flowerArray[id].prices[1];
     } else {
-      itemPrice = (+flowerArray[id].price / 4) * quantity;
-      base = +flowerArray[id].price / 4;
+      itemPrice = +flowerArray[id].prices[0]
+      base = +flowerArray[id].prices[0];
     }
-    priceSet(itemPrice, base)
+    priceSet(itemPrice * quantity, base)
     return itemPrice;
   }
   function priceSet(price, base) {
@@ -145,7 +129,7 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                   />
                   <div className="pd__info">
                     <h1 className="pd__title">{flowerArray[id].title}</h1>
-                    {(isResin() || isCrumble()) ? 
+                    {(flowerArray[id].category === "Resin/Crumble") ? 
                     <select
                     defaultValue="Ounce"
                     className="pd__options"
