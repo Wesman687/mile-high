@@ -7,6 +7,7 @@ import { auth } from "../firebase/init";
 import { signOutUser } from "../redux/userSlice";
 import { signOut } from "firebase/auth";
 import AccountSettings from "./AccountSettings";
+import  wholeSale  from '../assetts/wholeSale.png'
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -20,11 +21,15 @@ const Nav = () => {
   return (
     <div className="nav__container">
       <div className="logo__container">
+      <Link to="/wholesale">
+      <img src={wholeSale} alt="" className="wholesale" />
+      </Link>
         <h1 className="logo__text">MILE HIGH HEMP CO</h1>
+        
       </div>
 
       <div className="nav__wrapper"></div>
-
+      
       <p onClick={() => navigate("/")} className="home nav_link click">
         Home
       </p>

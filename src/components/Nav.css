@@ -25,7 +25,7 @@
 .logo__container {
     position: relative;
     z-index: 2;
-    width: 15vw;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,7 +41,16 @@
     border-radius: 6px;
     text-align: center;
 }
-
+.wholesale {
+    width: 250px;
+    top: 35px;
+    height: 175px;
+    position: absolute;
+    left: 0;
+    transform: rotate(-30deg);
+    cursor: pointer;
+    animation: rotateHalf 8500ms infinite ease-in-out;
+}
 .link {
     position: relative;
     z-index: 2;

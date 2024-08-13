@@ -1,8 +1,12 @@
 import React from "react";
 import "./WholeSale.css";
 import img from "../assetts/img2original.jpg";
+import { useDispatch } from "react-redux";
+import { openContactModal } from "../redux/modalSlice";
+
 
 const WholeSale = () => {
+  const dispatch = useDispatch()
   return (
     <div className="landing__container wholesale__container">
       <div className="wholesale__wrapper">
@@ -13,6 +17,8 @@ const WholeSale = () => {
           for Wholesale pricing.
         </p>
         <p>303-993-0458 (or) Milehighhempco@gmail.com</p>
+        <p className="wholesale__contact">Competitive Pricing, <span className="wholesale__link" onClick={()=>dispatch(openContactModal())}>Contact Us</span> Today!</p>
+        <h1>Call us Now! Guranteed Low Price</h1>
       </div>
     </div>
   );

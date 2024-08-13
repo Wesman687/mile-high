@@ -4,7 +4,7 @@
     min-height: 90vh;
 }
 .wholesale__wrapper img {
-    width: 60%;
+    width: 40%;
     padding: 32px;
 }
 .wholesale__wrapper {
@@ -13,10 +13,15 @@
     justify-content: center;
     flex-direction: column;
 }
+.wholesale__link {
+    cursor: pointer;
+    color: rgba(0, 255, 0, 0.712);
+}
 .wholesale__wrapper h1 {
     padding: 32px;
     font-size: 32px;
 }
 .wholesale__wrapper p {
     font-size: 24px;
+    padding: 12px 0;
 }

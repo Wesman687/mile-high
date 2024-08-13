@@ -5,17 +5,18 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding: 64px 32px;
 }
 .benefit__container {    
     align-items: center;
     justify-content: center;
 }
 .benefits__wrapper p {
-    font-size: 42px;
+    font-size: 32px;
     line-height: 2;
     text-align: center;
     width: 80%;
 }
 .benefits__wrapper h1 {
-    font-size: 64px;
+    font-size: 42px;
 }
