@@ -16,6 +16,7 @@ const Nav = () => {
     await signOut(auth);
     dispatch(signOutUser());
   }
+  console.log(user)
   return (
     <div className="nav__container">
       <div className="logo__container">

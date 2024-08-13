@@ -1,10 +1,22 @@
-
+.login {
+    position: relative;
+}
 .login__container {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.login__x {
+    position: absolute;
+    top: 6px;
+    right: 5px;
+    color: white;
+    font-size: 28px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 .login__modal {
     position: relative;
@@ -34,7 +46,7 @@
     max-width: 450px;
     background: rgba(0,0,0,0.75);
     border-radius: 4px;
-    padding: 60px;
+    padding: 16px;
     margin: auto;
 }
 .login-form h1 {

@@ -9,11 +9,15 @@ import {
   onAuthStateChanged, createUserWithEmailAndPassword,
   signInWithEmailAndPassword,  
 } from "firebase/auth";
+import { State, City } from "country-state-city";
 import { setUser } from "../redux/userSlice.js";
 import { addDoc, collection, where, getDocs, query } from "firebase/firestore";
 import { toast } from "react-toastify";
+import Select from "react-select";
 
 const Login = () => {
+  const states = State.getAllStates();
+  const cities = City.getAllCities();
   const [signState, setSignState] = useState("Sign In");
   const [lastName, setLastName] = useState("")
   const [firstName, setFirstName] = useState("");
@@ -24,18 +28,47 @@ const Login = () => {
   const [state, setState] = useState("");
   const [zip, setZip] = useState("");
   const [phone, setPhone] = useState("");
+  const [stateid, setStateid] = useState("")
   const [loading, setLoading] = useState(false);
   const isOpen = useSelector((state) => state.modals.loginModalOpen);
   const dispatch = useDispatch();
+  let valueStates = [];
+  let valueCities = [];
+    const refinedStates = states.filter((states) => states.countryCode == "US");
+    refinedStates.map((state) => {
+      valueStates.push({
+        value: state.name,
+        label: state.name,
+        stateid: state.isoCode,
+      });
+    });
+  const filterCity = () => {
+    const refinedCities = cities.filter(
+      (cities) => cities.stateCode == stateid
+    );
+    refinedCities.map((cities) => {
+      valueCities.push({ value: cities.name, label: cities.name });
+    });
+    return valueCities;
+  };
   async function handleSignUp(e) {
     e.preventDefault();
     setLoading(true)
-    const userCredentials = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    )
-    const res = userCredentials.user;
+    let res
+    try {
+      const userCredentials = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      )
+      res = userCredentials.user;
+    } catch (error) {
+      alert("Unable to create Account: ", error)
+      setLoading(false)
+      return
+    }
+    
+    
     dispatch(closeLoginModal());
     const docRef = await addDoc(collection(db, `user`), {
       uid: res.uid,
@@ -48,6 +81,7 @@ const Login = () => {
       state: state,
       zip: zip,
       phone: phone,
+      stateid: stateid
     });
     setLoading(false)
   }
@@ -86,8 +120,10 @@ const Login = () => {
           state: userInfo.state,
           zip: userInfo.zip,
           phone: userInfo.phone,
+          stateid: userInfo.stateid,
         })
       );
+      
     });
 
     return unsubscribe;
@@ -115,7 +151,15 @@ const Login = () => {
           </div>
         ) : (
           <div className="login">
-            <img src="" className="login-logo" alt="" />
+            
+            <div className="">
+                  <button
+                    className="login__x"
+                    onClick={() => dispatch(closeLoginModal())}
+                  >
+                    <FontAwesomeIcon icon="times" />
+                  </button>
+                </div>
 
             <div className="login-form">
               <h1>{signState}</h1>
@@ -185,22 +229,35 @@ const Login = () => {
                       type="zip"
                       placeholder="Zip"
                     />
-                    <input
-                      value={city}
-                      onChange={(event) => {
-                        setCity(event.target.value);
-                      }}
-                      type="city"
-                      placeholder="City"
-                    />
-                    <input
-                      value={state}
-                      onChange={(event) => {
-                        setState(event.target.value);
-                      }}
-                      type="state"
-                      placeholder="State"
-                    />
+                    <div className="select">
+                        <Select
+                          name="States"
+                          isSearchable={true}
+                          defaultInputValue={state}
+                          options={valueStates}
+                          classNamePrefix="react-select"
+                          unstyled={true}
+                          onChange={(e) => {
+                            setStateid(e.stateid);
+                            setState(e.value);
+                            filterCity();
+                          }}
+                        ></Select>
+                      </div>
+
+                      <div className="select2">
+                        <Select
+                          name="Cities"
+                          isSearchable={true}
+                          defaultInputValue={city}
+                          options={filterCity()}
+                          classNamePrefix="react-select"
+                          unstyled={true}
+                          onChange={(e) => {
+                            setCity(e.value);
+                          }}
+                        ></Select>
+                      </div>
                   </>
                 )}
                 {signState === "Sign Up" ? (
@@ -214,13 +271,6 @@ const Login = () => {
                     Sign In
                   </button>
                 )}
-                <div className="form-help">
-                  <div className="remember">
-                    <input type="checkbox" />
-                    <label htmlFor="">Remember Me</label>
-                  </div>
-                  <p>Need Help</p>
-                </div>
               </form>
               <div className="form-switch">
                 {signState === "Sign In" ? (

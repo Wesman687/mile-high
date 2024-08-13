@@ -11,10 +11,7 @@ const initialState = {
     state: null,
     zip: null,
     phone: null,
-    country: null,
-    countryid: null,
     stateid: null,
-    cityid: null
 
 }
 const userSlice = createSlice({
@@ -31,10 +28,7 @@ const userSlice = createSlice({
         state.zip = action.payload.zip
         state.city = action.payload.city
         state.phone = action.payload.phone
-        state.country = action.payload.country
-        state.countryid = action.payload.countryid
         state.stateid = action.payload.stateid
-        state.cityid = action.payload.cityid
     },
     signOutUser : (state) =>{
       state.firstName = null
@@ -46,10 +40,7 @@ const userSlice = createSlice({
       state.state = null
       state.zip = null
       state.phone = null
-      state.country = null
-      state.countryid = null
       state.stateid = null
-      state.cityid = null
     }
   }
 });
