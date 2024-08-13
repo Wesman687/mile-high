@@ -30,6 +30,7 @@ const Return = () => {
 
   if (status === "complete") {
     dispatch(clearCart())
+    console.log("sending order", cart)
     dispatch(addOrder(cart))
     return (
       <div className="cart__container">

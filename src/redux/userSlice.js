@@ -51,9 +51,10 @@ const userSlice = createSlice({
       state.stateid = null
     },
     addOrder: async (state, action) => {
+      console.log("adding order". action.payload.cart)
       const userRef = await query(
         collection(db, "user"),
-        where("uid", "==", state.user.uid)
+        where("uid", "==", state.uid)
       );
       const data = await getDocs(userRef);
       const docRef = doc(db, "user", data.docs[0].id);
