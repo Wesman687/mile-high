@@ -30,6 +30,9 @@
     align-items: center;
     justify-content: center;
 }
+.logo {
+    width: 100px;
+}
 .logo__text {
     position: relative;
     z-index: 2;
@@ -43,7 +46,7 @@
 }
 .wholesale {
     width: 250px;
-    top: 35px;
+    top: 125px;
     height: 175px;
     position: absolute;
     left: 0;

@@ -8,7 +8,7 @@ import { signOutUser } from "../redux/userSlice";
 import { signOut } from "firebase/auth";
 import AccountSettings from "./AccountSettings";
 import  wholeSale  from '../assetts/wholeSale.png'
-
+import  hemp  from '../assetts/Hemp.png'
 const Nav = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
@@ -24,7 +24,7 @@ const Nav = () => {
       <Link to="/wholesale">
       <img src={wholeSale} alt="" className="wholesale" />
       </Link>
-        <h1 className="logo__text">MILE HIGH HEMP CO</h1>
+        <img src={hemp} alt="" className="logo" />
         
       </div>
 
