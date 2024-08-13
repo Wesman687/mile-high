@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import './Return.css'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../redux/cartSlice";
+import { addOrder } from "../redux/userSlice";
 
 const Return = () => {
   const [status, setStatus] = useState(null);
+  const cart = useSelector(state => state.cart)
   const [customerEmail, setCustomerEmail] = useState("");
   const dispatch = useDispatch()
 
@@ -28,6 +30,7 @@ const Return = () => {
 
   if (status === "complete") {
     dispatch(clearCart())
+    dispatch(addOrder(cart))
     return (
       <div className="cart__container">
         <div className="cart__row">
