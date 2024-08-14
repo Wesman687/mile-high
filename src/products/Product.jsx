@@ -13,15 +13,7 @@ const Product = ({item, index}) => {
       <img src={item.image} onDragStart={handleDragStart} role="presentation" alt="" className="product__image" />
       </figure>
       <div className="price__wrapper">
-        {item.category === "Resin/Crumble" ?  
-        <>        
-        <h2 className="product__price">${item.prices[0]}</h2>
-        <p className="product__grams">2 grams</p>
-        </> 
-        : <>
-         <h2 className="product__price">{`$${item.price / 4}`}</h2>
-        <p className="product__grams">7 grams</p>
-        </>}
+        <h2 className="product__price">${item.prices[0]} - ${item.prices[2]}</h2>
       </div>
     </div>
 

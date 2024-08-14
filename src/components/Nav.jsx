@@ -34,7 +34,7 @@ const Nav = () => {
         Home
       </p>
       <div className="about nav_link">
-        <p>About</p>
+        <p className="nav_link">About</p>
         <div className="about_dropdown">
           <Link to="/wholesale">
             <p className="sb__link">WHOLESALE</p>
@@ -57,7 +57,7 @@ const Nav = () => {
       <div className="nav_link admin">
         {user.firstName ? (
           <div className="admin">
-            <p className="admin__link admin">{user.firstName}</p>
+            <p className="nav_link admin__link admin">{user.firstName}</p>
           </div>
         ) : (
           <>

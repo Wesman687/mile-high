@@ -54,21 +54,12 @@
     cursor: pointer;
     animation: rotateHalf 8500ms infinite ease-in-out;
 }
-.link {
-    position: relative;
-    z-index: 2;
-    color: #fff;
-    font-size: 32px;
-    font-weight: bold;
-    
-}
-.link:hover { 
+.nav_link:hover { 
     color: rgba(0, 255, 0, 0.712);
 }
 .links {
     display: flex;
-    gap: 32px;
-    
+    gap: 32px;   
 
 }
 .nav__wrapper {
@@ -127,7 +118,7 @@
 }
 .nav_link {
     cursor: pointer;
-    color: white;
+    color: rgb(30, 255, 0);
     position: relative;
     font-size: 32px;
     text-wrap: nowrap;

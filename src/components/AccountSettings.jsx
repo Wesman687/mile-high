@@ -112,7 +112,7 @@ const AccountSettings = () => {
       {ready && (
         <>
           <p
-            className="nav_link sb__link"
+            className="sb__link"
             onClick={() => dispatch(openSettingModal())}
           >
             Settings
