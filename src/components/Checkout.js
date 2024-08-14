@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 const Checkout = () => {
     const cart = useSelector((state) => state.cart.cart)
+    const user = useSelector((state)=> state.user)
     const fetchClientSecret = useCallback(() => {
       // Create a Checkout Session
       return fetch("https://milehighserv.onrender.com/create-checkout-session", {
@@ -18,7 +19,7 @@ const Checkout = () => {
             'Content-Type': 'application/json'
         },
         method: "POST",
-        body:JSON.stringify({cart})
+        body:JSON.stringify({cart, user})
       })
         .then((res) => res.json())
         .then((data) => data.clientSecret);
