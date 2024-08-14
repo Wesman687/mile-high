@@ -168,17 +168,22 @@
     padding: 40px;
   }
   
-  .btn__checkout {
+  .btn__checkout, .continue__shopping {
     width: 100%;
     font-size: 16px;
     padding: 12px 6px;
     background-color: #7342d6;
     color: #fff;
+    cursor: pointer;
   }
-  .btn__checkout:hover {
+  .continue__shopping {
+    margin-top: 12px;
+  }
+  .btn__checkout:hover, .continue__shopping:hover {
     background-color: #fff;
     color: #7342d6;
   }
+
   .cart__text {
     color: black;
     padding-bottom: 12px;

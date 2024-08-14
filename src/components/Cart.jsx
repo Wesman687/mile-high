@@ -162,6 +162,9 @@ const Cart = ({ flowerArray, loading }) => {
             >
               Proceed to checkout
             </button>
+              <button className="continue__shopping" onClick={() => navigate("/")}>
+                Continue Shopping
+              </button>
           </div>
         )}
       </div>
