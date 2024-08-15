@@ -19,7 +19,7 @@
     cursor: pointer;
 }
 .login__x:hover {
-    color: #e50914;
+    color: rgba(0, 255, 0, 0.712);
 }
 .login__modal {
     position: relative;
@@ -69,6 +69,7 @@
     padding: 16px 20px;
     font-size: 16px;
     font-weight: 500;
+    border: 2px solid rgba(0, 255, 0, 0.712);
 }
 .login-form input::placeholder {
     font-size: 16px;
@@ -79,7 +80,7 @@
     border: 0;
     outline: 0;
     padding: 16px;
-    background: #e50914;
+    background: rgba(0, 255, 0, 0.712);
     color: white;
     border-radius: 4px;
     font-size: 16px;
@@ -87,21 +88,22 @@
     margin-top: 20px;
     cursor: pointer;
 }
+.submit {
+    
+    border: 2px solid rgba(0, 255, 0, 0.712);
+}
+.submit:hover {
+        background-color: transparent;
+        color: white;        
+        border: 2px solid rgba(0, 255, 0, 0.712);
+ 
+}
 .form-help {
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: #b3b3b3;
     font-size: 13px;
-}
-.remember {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-.remember input {
-    width: 18px;
-    height: 18px;
 }
 .form-switch {
     margin-top: 40px;

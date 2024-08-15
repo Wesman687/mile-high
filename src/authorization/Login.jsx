@@ -286,18 +286,20 @@ const Login = () => {
                   </>
                 )}
                 {signState === "Sign Up" ? (
-                  <button onClick={handleSignUp}>Sign Up</button>
+                  <button className="submit" onClick={handleSignUp}>Sign Up</button>
                 ) : (
-                  <button type="submit" onClick={(e) => {
+                  <>
+                  <button type="submit" className="submit" onClick={(e) => {
                     e.preventDefault()
                     login(email, password)
                     dispatch(closeLoginModal())
                     }}>
                     Sign In
-                  </button>
+                  </button>                  
+              <button className="submit" onClick={loginGoogle}>Sign In With Google</button>
+              </>
                 )}
               </form>
-              <button onClick={loginGoogle}>Sign In With Google</button>
               <div className="form-switch">
                 {signState === "Sign In" ? (
                   <p>
