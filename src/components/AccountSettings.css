@@ -1,10 +1,4 @@
-.settings {
-    height: 80vh;
-    width: 450px;
-}
-.settings_form {
-    height: 100%;
-}
+
 .disable__submit {    
     width: 100%;
     border: 0;

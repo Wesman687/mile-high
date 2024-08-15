@@ -12,6 +12,7 @@
     top: 0;
     left: 0;
     z-index: 100;
+    box-shadow: rgba(255, 255, 255, 0.233) 0px 0px 45px 0.1px;
 }
 .nav__container::before {
     content: "";
