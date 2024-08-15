@@ -31,18 +31,6 @@
     font-size: 24px;    
     padding-bottom: 12px;
 }
-.pd__strain--wrapper {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    padding-bottom: 14px;
-}
-.pd__strain {
-    font-size: 12px;
-    gap: 8px;
-    border: 2px solid white;
-    padding: 4px;
-}
 .amount {
     padding: 12px;
     display: flex;

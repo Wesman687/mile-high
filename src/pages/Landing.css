@@ -13,7 +13,7 @@
     padding: 32px 0;
 }
 .products {
-  border: 2px solid #fff;
+  border: 2px solid rgba(0, 255, 0, 0.712);
   padding: 16px;
   box-shadow: rgba(255, 255, 255, 0.288) 0px 0px 40px 0.2px;
   display: flex;
