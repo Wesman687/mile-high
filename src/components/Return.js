@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import './Return.css'
 import { useDispatch } from "react-redux";
 import { clearCart } from "../redux/cartSlice";
@@ -8,6 +8,7 @@ const Return = () => {
   const [status, setStatus] = useState(null);
   const [customerEmail, setCustomerEmail] = useState("");
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const queryString = window.location.search;
@@ -47,7 +48,7 @@ const Return = () => {
                 to {customerEmail}. If you have any questions, please email{" "}
                 <a href="mailto:orders@example.com">Milehighhempco@google.com</a>.
               </p>
-              <button className="continue__browsing continue__shopping">Continue Browsing</button>
+              <button className="continue__browsing continue__shopping" onClick={()=> navigate('/')}>Continue Browsing</button>
             </div>
           </div>
         </div>
