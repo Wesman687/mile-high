@@ -45,5 +45,12 @@
     .products__title {
         font-size: 28px;
     }
+    .product__image {
+        max-height: 250px !important;
+        overflow-y: hidden;
+    }
+    .product__wrapper {
+        padding: 8px;
+    }
 
 }

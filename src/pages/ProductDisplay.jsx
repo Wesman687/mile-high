@@ -121,6 +121,7 @@ const ProductDisplay = ({ flowerArray, loading }) => {
             {flowerArray.length > 0 && (
               <>
                 <div className="pd__wrapper">
+                  <div className="info__wrapper">
                   <img
                     src={flowerArray[id].image}
                     alt=""
@@ -200,6 +201,7 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                         Add to Cart
                       </button>
                     )}
+                  </div>
                   </div>
                   <div className="desc__container">
                   {isResin() ?  <>

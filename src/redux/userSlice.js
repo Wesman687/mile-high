@@ -48,10 +48,14 @@ const userSlice = createSlice({
       state.phone = null
       state.stateid = null
     },
+    checkUserInfo: (state) =>{
 
+        
+    }
   }
+    
 });
 
-export const { setUser, signOutUser, addOrder } = userSlice.actions
+export const { setUser, signOutUser, addOrder, checkUserInfo } = userSlice.actions
 
 export default userSlice.reducer

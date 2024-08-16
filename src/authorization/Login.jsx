@@ -123,6 +123,29 @@ const Login = () => {
     setLoading(false)
     
 }
+const checkCredentials = (e) => {
+  if (!firstName) {
+    return true
+  }
+  else if (!lastName) {
+    return true
+  }
+  else if (!address) {
+    return true
+  }
+  else if (!city) {
+    return true
+  }
+  else if (!state) {
+    return true
+  }
+  else if (!phone) {
+    return true
+  }
+  else {
+    return false
+  }
+}
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (!currentUser) {
@@ -285,8 +308,9 @@ const Login = () => {
                       </div>
                   </>
                 )}
-                {signState === "Sign Up" ? (
-                  <button className="submit" onClick={handleSignUp}>Sign Up</button>
+                {signState === "Sign Up" ? (<>
+                  {!(checkCredentials()) ? <button className="submit" onClick={handleSignUp}>Sign Up</button> : <button className="submit__disabled">Fill out all Fields</button> }
+                  </>
                 ) : (
                   <>
                   <button type="submit" className="submit" onClick={(e) => {
@@ -296,7 +320,6 @@ const Login = () => {
                     }}>
                     Sign In
                   </button>                  
-              <button className="submit" onClick={loginGoogle}>Sign In With Google</button>
               </>
                 )}
               </form>

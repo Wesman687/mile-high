@@ -1,20 +1,22 @@
 .pd__container {
   background-color: #0d0b24;
   width: 100vw;
-  height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: 100vh;
+  padding-top: 32px;
 }
 .pd__image {
-    width: 60%;
-    max-width: 350px;
+    width: 350px;
     max-height: 40vh;
 }
 .pd__wrapper {
     display: flex;
     width: 70%;
+    align-items: center;
+    justify-content: center;
 }
 
 .pd__info {
@@ -96,19 +98,15 @@
     font-weight: bold;
     background-color: rgba(0, 255, 0, 0.712);
 }
+.info__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .checkout:hover {
     background-color: #fff;
     color: rgba(0, 255, 0, 0.712);
-}
-.pd__thumb--window {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-.thumb__image {
-    padding-top: 16px;
-    width: 150px;
-    max-height: 150px;
 }
 .amount__button {
     display: flex;
@@ -120,16 +118,40 @@
     color: rgb(0, 255, 0);
     font-size: 18px;
 }
-
+@media (max-width: 1200px) {
+    .pd__wrapper {
+        flex-direction: column;
+        width: 100%;
+    }
+    .pd__image {
+        width: 250px;
+    }
+    .info__wrapper {
+        width: 100%;
+    }
+    .pd__info {
+        width: 50%;
+    }
+    .pd__options {
+        width: 75px !important;
+    }
+    .checkout {
+        width: 30%;
+    }
+}
 @media (max-width: 768px) {
     .pd__container {
         width: 100vw;
         padding: 0 !important;
     }
+    .pd__image {
+        width: 150px;
+        height: 150px;
+    }
+    .desc__container {
+        padding: 0 16px;
+    }
     .pd__wrapper {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
         padding: 0;
     }
     .pd__thumb--window {
@@ -146,7 +168,7 @@
         align-items: center;
     }
     .pd__title {
-        font-size: 18px;
+        font-size: 14px;
         text-align: center;
     }
     .amount {
@@ -157,5 +179,26 @@
     }
     .display__price {
         padding-top: 12px;
+    }
+  }
+  @media (max-width: 550px) { 
+    .pd__wrapper {
+        padding-top: 164px;
+    }
+    .info__wrapper {
+        flex-direction: column;
+    }
+    .pd__image {
+        width: 75px;
+        height: 75px;
+    }
+    .checkout {
+        width: 125px;
+    }
+    .pd__crumble {
+        font-size: 16px;
+    }
+    .pd__resin {
+        font-size: 14px;
     }
   }

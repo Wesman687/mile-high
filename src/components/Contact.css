@@ -107,8 +107,26 @@
     cursor: pointer;
     
 }
+.contact__submit--disabled {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: 16px;
+    background: rgba(0, 97, 0, 0.712);
+    color: rgb(114, 114, 114);
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 12px 0 0 0;
+    cursor: not-allowed;
+}
 .contact__submit:hover {
     background-color: transparent;
     border: 2px solid rgba(0, 255, 0, 0.712);
     color: white;
+}
+@media (max-width: 550px) { 
+    .contact-form h1 {
+        font-size: 18px;
+    }
 }

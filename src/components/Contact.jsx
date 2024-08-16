@@ -14,21 +14,25 @@ const Contact = () => {
     const [text, setText] = useState("")
     const [isSending, setIsSending] = useState(false)
     const [sendStatus, setSendStatus] = useState({ processed: false, message: "", variant: "success" })
+    const [isEmail, setIsEmail] = useState(false)
+    const [isText, setIsText] = useState(false)
     const timeoutAlert = () =>
         setTimeout(() => {
           setSendStatus({ ...sendStatus, processed: false })
         }, 3000)
+    const checkCredentials = () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (text && name && emailRegex.test(email))
+          return true
+        else return false
+    }
     const sendEmail = async (e) => {   
         e.preventDefault()
         const serviceid = process.env.REACT_APP_SERVICE_ID
         const templateid = process.env.REACT_APP_TEMPLATE_ID
         const publicKey = process.env.REACT_APP_PUBLIC_KEY
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-        if (!emailRegex.test(email)) {
-          setSendStatus({ processed: true, variant: "error", message: "Invalid email" })
-          timeoutAlert()
-          return
-        }
+        
+        
     
         setIsSending(true)
         try {
@@ -62,7 +66,7 @@ const Contact = () => {
     
   return (
     <>
-        <p className="nav_link contact_link" onClick={()=>dispatch(openContactModal())}>Contact Us</p>
+        <p className="nav_link" onClick={()=>dispatch(openContactModal())}>Contact Us</p>
         <Modal
         open={isOpen}
         onClose={() => dispatch(closeContactModal())}
@@ -101,11 +105,15 @@ const Contact = () => {
                   type="email"
                   placeholder="Email"
                 />
-                <textarea onChange={e => setText(e.target.value)} className='contact__text' placeholder='Let us know how we can help you' value={text}></textarea>
+                <textarea onChange={e => {
+                  setText(e.target.value)                  
+                  }} className='contact__text' placeholder='Let us know how we can help you' value={text}></textarea>
                 
                 
                 </form>
-                <button className='contact__submit' onClick={(e)=>sendEmail(e)}>{isSending ? 'Sending Message' : 'Send Message'}</button>
+                {(checkCredentials()) ? <button className='contact__submit' onClick={(e)=>sendEmail(e)}>{isSending ? 'Sending Message' : 'Send Message'}</button> :
+                <button className='contact__submit--disabled'>Fill in Fields</button>
+                 }
               </div>
             </div>
         )}

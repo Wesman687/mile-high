@@ -15,7 +15,6 @@ import {
   doc,
   getDocs,
   query,
-  updateDoc,
   where,
 } from "firebase/firestore";
 import { db } from "../firebase/init";
@@ -46,12 +45,21 @@ const Cart = ({ flowerArray, loading }) => {
   }
   function performCheckOut(e) {
     console.log(user);
-    if (user.email) {
+    if (checkCredentials()) {
       e.preventDefault();
       addOrder();
       navigate("/checkout");
     } else {
+      alert("Please check user account info, then order again.")
       dispatch(openLoginModal());
+    }
+  }
+  const checkCredentials = (e) => {
+    if (user.firstName && user.lastName && user.address && user.city && user.state && user.phone && user.zip && user.email) {
+      return true
+    }
+    else {
+      return false
     }
   }
 
@@ -118,8 +126,7 @@ const Cart = ({ flowerArray, loading }) => {
                         </button>
                       </div>
                     </div>
-                    <div className="cart__strain"></div>
-                    <div className="cart__size">{items.size}</div>
+                    <div className="cart__size">{items.option}</div>
                     <div className="cart__book--price">{items.price}</div>
                   </div>
 

@@ -48,7 +48,10 @@
 }
 .react-select__control, .react-select__option {
         border: 2px solid rgba(0, 255, 0, 0.712);
-
+}
+.react-select__option:hover {
+    background-color: white;
+    color: rgba(0, 255, 0, 0.712);
 }
 .react-select__option {
     border: 2px solid rgba(0, 255, 0, 0.712);

@@ -55,7 +55,6 @@
 .login-form h1 {
     font-size: 32px;
     font-weight: 500;
-    margin-bottom: 28px;
 }
 .login-form input {
     width: 100%;
@@ -88,9 +87,14 @@
     margin-top: 20px;
     cursor: pointer;
 }
-.submit {
-    
+.submit {    
     border: 2px solid rgba(0, 255, 0, 0.712);
+}
+.submit__disabled {
+    background-color: rgb(2, 65, 2) !important;
+    border: 2px solid rgb(2, 65, 2);
+    color: #575555 !important;
+    cursor: not-allowed !important;
 }
 .submit:hover {
         background-color: transparent;
@@ -106,7 +110,7 @@
     font-size: 13px;
 }
 .form-switch {
-    margin-top: 40px;
+    margin-top: 12px;
     color: #737373;
     font-weight: 500;
     cursor: pointer;
