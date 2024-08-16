@@ -14,7 +14,7 @@
     border: 2px solid green;
     border-radius: 50%;
     padding: 20px;
-    background-color: green;
+    background: linear-gradient(to bottom, rgb(145, 255, 1), rgb(3, 185, 12));
     position: fixed;
     bottom: 8%;
     right: 5%;

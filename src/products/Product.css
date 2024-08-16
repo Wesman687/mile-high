@@ -6,13 +6,18 @@
 }
 .product:hover {
   transform: scale(125%);
+  z-index: 100;
 }
 .product__name {
   font-size: 24px;
+  background: linear-gradient(to bottom, rgb(151, 255, 165), white);
+  background-clip: text;
+  color: transparent;
 }
 .product__image {
   width: 60%;
   max-height: 350px;
+  box-shadow: rgba(255, 255, 255, 0.274) 0px 0px 40px 0.2px;
 }
 .img__wrapper {
   max-height: 250px;
@@ -30,11 +35,19 @@
   gap: 12px;
   width: 325px;
   height: 350px;
+  backdrop-filter: blur(10px);
+  box-shadow: rgba(255, 255, 255, 0.288) 0px 0px 40px 0.2px;
 }
 .product__strain {
   text-decoration: underline;
   padding: 2px;
   font-size: 12px;
+}
+.product__price {
+  
+  background: linear-gradient(to bottom, rgb(151, 255, 67), white);
+  background-clip: text;
+  color: transparent;
 }
 .strain__container {
   display: flex;
@@ -52,6 +65,9 @@
   text-align: center;
   width: 60%;
   z-index: 5;
+  background: linear-gradient(to bottom, rgb(1, 255, 35), white);
+  background-clip: text;
+  color: transparent;
 }
 .alice-carousel__prev-btn,
 .alice-carousel__next-btn {

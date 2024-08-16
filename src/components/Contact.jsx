@@ -78,7 +78,6 @@ const Contact = () => {
             <img src="" alt="" />
           </div>
         ) : (
-          <div className="login contact">
             
             <div className="contact-form">
                 
@@ -115,7 +114,6 @@ const Contact = () => {
                 <button className='contact__submit--disabled'>Fill in Fields</button>
                  }
               </div>
-            </div>
         )}
       </Modal>
       
