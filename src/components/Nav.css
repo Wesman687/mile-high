@@ -96,7 +96,7 @@
     font-size: 32px;
     text-wrap: nowrap;
     padding-right: 32px;
-    background: linear-gradient(to bottom, rgb(14, 104, 2), rgb(0, 0, 0));
+    background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(221, 255, 216));
     background-clip: text;
     color: transparent;
 }
@@ -116,6 +116,9 @@
 .sb__link:hover {
     color: rgba(0, 255, 0, 0.712);
 }
+.btn__nav--link:hover {
+    color: rgba(0, 255, 0, 0.712)
+}
 .btn__menu {
     position: relative;
     background-color: transparent;
@@ -126,7 +129,7 @@
     color: white;
   }
   .btn__menu:hover {
-    color: white;
+    color: rgb(176, 255, 176)
   }
   
   

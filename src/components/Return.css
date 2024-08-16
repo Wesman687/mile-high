@@ -18,3 +18,18 @@
     justify-content: center;
     flex-direction: column;
 }
+
+@media (maxwidth: 756px) {
+    .return__header {
+        font-size: 18px;
+        margin: 32px;
+    }
+    .return__paragraph { 
+        font-size: 16px;
+        margin: 12px;
+    }
+    .continue__browsing {
+        width: 300px;
+
+    }
+}
