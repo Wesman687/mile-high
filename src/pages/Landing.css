@@ -1,12 +1,13 @@
 .landing__container {
     background-color: #000000;
-    width: 100vw;
+    width: 100vw !important;
     min-height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;        
 }
+
 .products {
   padding: 16px;
   background: rgba(0, 0, 0, 0.336);

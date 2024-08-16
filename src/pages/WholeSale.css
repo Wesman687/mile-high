@@ -24,4 +24,16 @@
 .wholesale__wrapper p {
     font-size: 24px;
     padding: 12px 0;
+    text-align: center;
+}
+@media (max-width: 756px) {
+    .wholesale__wrapper h1 { 
+        font-size: 22px;
+    }
+    .wholesale__wrapper p {
+        font-size: 18px;
+    }
+    .wholesale__wrapper {
+        width: 80%;
+    }
 }

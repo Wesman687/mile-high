@@ -14,3 +14,11 @@
 .thca__wrapper h1 {
     padding: 32px;
 }
+@media (max-width: 756px) {
+    .thca__wrapper h1 {
+        font-size: 22px;
+    }   
+    .thca__wrapper p {
+        font-size: 18px;
+    }
+}

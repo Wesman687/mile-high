@@ -122,7 +122,6 @@ const AccountSettings = () => {
             onClose={() => dispatch(closeSettingModal())}
             className="settings__modal contact__modal"
           >
-            <div className="login contact settings">
               <div className="contact-form settings_form">
                 <div className="contact__x">
                   <button
@@ -227,7 +226,6 @@ const AccountSettings = () => {
                     </form>
                   </>
                 )}
-              </div>
             </div>
           </Modal>{" "}
         </>

@@ -19,5 +19,13 @@
 }
 .aboutus__wrapper p {
     font-size: 32px;
-    line-height: 3;
+    line-height: 2;
+}
+@media (max-width: 756px) { 
+    .aboutus__wrapper h1 {
+        font-size: 22px;
+    }
+    .aboutus__wrapper p {
+        font-size: 18px;
+    }
 }
