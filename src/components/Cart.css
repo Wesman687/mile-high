@@ -11,12 +11,12 @@
     display: flex;
     justify-content: center;
     
-    background-color: #0d0b24;
+    background-color: #05050509;
 }
 
 .cart__row {
-  width: 100%;
-  max-width: 1200px;
+  width: 90%;
+  height: 90%;
   margin: 0 auto;
   padding: 48px 12px;
   background-color: white;
@@ -162,10 +162,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
   }
   
   .cart__empty--img {
-    width: 60%;
+    width: 40%;
     padding: 40px;
   }
   
@@ -227,6 +228,10 @@
     .cart__size {
       font-size: 8px;
       width: 20%;
+    }
+    .cart__empty--img {
+      width: 60%;
+      padding: 32px 0;
     }
   }
   /* SMALL PHONES, TABLETS, LARGE SMARTPHONES */

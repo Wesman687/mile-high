@@ -9,7 +9,6 @@ const Landing = ({flowerArray, loading}) => {
   
   return (
     <div className="landing__container">
-      <div className="popular__products">
          {loading ? <div className="login-spinner"><FontAwesomeIcon icon="fas fa-spinner"></FontAwesomeIcon></div> : 
          <div className="products">
               
@@ -20,7 +19,6 @@ const Landing = ({flowerArray, loading}) => {
                           
                        
           </div>}
-        </div>
     </div>
   );
 };
