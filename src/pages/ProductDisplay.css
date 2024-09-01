@@ -81,6 +81,8 @@
     background: linear-gradient(to bottom, white, rgb(145, 255, 1), white);
     background-clip: text;
     color: transparent;
+    white-space: pre-line;
+    white-space: pre-wrap;
 }
 .desc__container {
     flex-direction: column;

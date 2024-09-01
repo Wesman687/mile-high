@@ -18,7 +18,7 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "../firebase/init";
-import { openLoginModal } from "../redux/modalSlice";
+import { closeCartModal, openLoginModal } from "../redux/modalSlice";
 
 const Cart = ({ flowerArray, loading }) => {
   const totalPrice = useSelector((state) => state.cart.totalPrice);
@@ -64,6 +64,7 @@ const Cart = ({ flowerArray, loading }) => {
   }
 
   useEffect(() => {
+    dispatch(closeCartModal())
     dispatch(getPrice());
   }, []);
   return (

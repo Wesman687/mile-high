@@ -110,6 +110,7 @@ const ProductDisplay = ({ flowerArray, loading }) => {
   useEffect(() => {
     getPrice("Ounce", 1);
   }, []);
+  console.log(flowerArray[id])
   return (
     <div className="row">
       <div className="pd__container">
@@ -135,7 +136,7 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                   <div className="pd__info">
                   <Fade delay={1000} duration={5000}>
                     
-                    <h1 className="pd__title">{flowerArray[id].title}</h1>
+                    <h1 className="pd__title">{flowerArray[id].name}</h1>
                     {(flowerArray[id].category === "Resin/Crumble") ? 
                     <select
                     defaultValue="Ounce"
@@ -213,16 +214,20 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                   </div>
                   </div>
                   <div className="desc__container">
+                  <>
                     <Bounce cascade={true} delay={1300} duration={2500}>
                       <Fade delay={250}>
-                  {isResin() ?  <>
-                  <h1 className="pd__crumble">THCa Live Resin is a cannabis concentrate that preserves the raw, fresh flavors and aromas of the cannabis plant.</h1>
+                      <h1 className="pd__desc" inner>{(flowerArray[id].desc)}</h1>
+                  {(isResin() === true) &&  <>                  
+                    <Fade cascade={true} delay={3800}>
                      <p className="pd__resin">Unlike other concentrates, Live Resin is made from freshly harvest ed hemp plants that haven't been cured or dried. This distinction is crucial because it maintains the rich terpene profile and peak cannabinoid content that often gets lost in the drying and curing process.</p>
                       <p className="pd__resin">THCa Live Resin is prized not only for its potent effects but also for its ability to deliver a more powerful experience than concentrates derived from the cured plant material.</p>
+                  
+                      </Fade>
                   </>
-                  : 
-                  <h1 className="pd__desc">{(flowerArray[id].desc.replace(/(?:\\[rn]|[\r\n])/g," "))}</h1>}
-                  {isCrumble() && <>
+                  }
+                  
+                  {(isCrumble() === true) && <>
                   <Fade cascade={true} delay={3800}>
                   <h1 className="pd__crumble">How Long does crumble take to hit</h1>
                   <p>Once you place the crumble on your dab rig and take the first toke, within a few seconds to a minute it will hit you.</p>
@@ -235,18 +240,19 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                   
                   </Fade>
                   </Bounce>
+                  </>
                   </div>
                   
                 </div>
               </>
             )}
-            <div className="pd__thumb--window">
-              {/*flower[id].thumb.map((curr, index) => (
+            {/* <div className="pd__thumb--window">
+              flower[id].thumb.map((curr, index) => (
               <figure className="thumb__figure" key={index}>
                 <img src={curr} alt="" className="thumb__image" />
               </figure>
-            ))*/}
-            </div>
+            ))
+            </div> */}
           </>
         )}
       </div>

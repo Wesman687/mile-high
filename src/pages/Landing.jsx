@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import "./Landing.css";
 import Product from "../products/Product";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AttentionSeeker, Bounce, Fade, Flip, Hinge, JackInTheBox, Roll, Rotate } from 'react-awesome-reveal'
+import { useDispatch, useSelector } from "react-redux";
+import { openCartModal } from "../redux/modalSlice";
 
 
 const Landing = ({flowerArray, loading}) => {
+  const numberOfItems = useSelector((state) => state.cart.totalQuantity);
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    if (numberOfItems > 0) {
+      dispatch(openCartModal())
+    }
+  },[])
   return (
     <div className="landing__container">
          {loading ? <div className="login-spinner"><FontAwesomeIcon icon="fas fa-spinner"></FontAwesomeIcon></div> : 

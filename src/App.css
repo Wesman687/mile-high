@@ -46,12 +46,15 @@ body {
 }
 @keyframes rotateHalf {
   0% { 
-      transform: rotate(0)
+      transform: rotate(0);
+      opacity: .4;
   }
   50% {
-      transform: rotate(-30deg)
+      transform: rotate(-30deg);
+      opacity: 1;
   }
   100%{
     transform: rotate(0);
+    opacity: .4;
   }
 }
