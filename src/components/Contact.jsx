@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Contact.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { Modal } from '@mui/material'
+import { Fade, Modal, Zoom } from '@mui/material'
 import { closeContactModal, openContactModal } from '../redux/modalSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import emailjs from "@emailjs/browser"
@@ -77,6 +77,7 @@ const Contact = () => {
         ) : (
             
             <div className="contact-form">
+              
                 
             <div className='contact__x'>
             <button className='times__button' onClick={()=>dispatch(closeContactModal())}>

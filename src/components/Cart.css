@@ -91,6 +91,9 @@
     margin: 0 24px;
     padding: 24px 16px;
   }
+  .jack__container {
+    width: 100%;
+  }
   
   .cart__input {
     padding: 8px;
@@ -184,7 +187,9 @@
   .btn__checkout:hover, .continue__shopping:hover {
     color: white;
   }
-
+  .cart__fade {
+    width: 100%;
+  }
   .cart__text {
     color: black;
     padding-bottom: 12px;

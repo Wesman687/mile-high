@@ -19,6 +19,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase/init";
 import { closeCartModal, openLoginModal } from "../redux/modalSlice";
+import { Fade, JackInTheBox, Roll } from "react-awesome-reveal";
 
 const Cart = ({ flowerArray, loading }) => {
   const totalPrice = useSelector((state) => state.cart.totalPrice);
@@ -69,6 +70,8 @@ const Cart = ({ flowerArray, loading }) => {
   }, []);
   return (
     <div className="cart__container">
+      <div className="jack__container">
+      <JackInTheBox>
       <div className="cart__row">
         <div className="book__selected--top">
           <h2 className="cart__title">Cart</h2>
@@ -84,6 +87,7 @@ const Cart = ({ flowerArray, loading }) => {
             {cart.map((items, index) => {
               return (
                 <div className="cart__item--wrapper" key={index}>
+                  <Fade delay={1000 + index * 500}>
                   <div className="cart__item">
                     <div className="box__title">
                       <div className="cart__img--title">
@@ -132,6 +136,7 @@ const Cart = ({ flowerArray, loading }) => {
                   </div>
 
                   <div className="cart__total"></div>
+                  </Fade>
                 </div>
               );
             })}
@@ -150,8 +155,10 @@ const Cart = ({ flowerArray, loading }) => {
         </div>
         {cart.length > 0 && (
           <div className="total">
+            
+            <Fade className="cart__fade" cascade={true} delay={1000 + cart.length * 500}>
             <div className="total__item total__sub-total">
-              <span>Subtotal</span>
+              <span>Subtotal    </span>
               <span>${totalPrice.toFixed(2)}</span>
             </div>
             <div className="total__item total__tax">
@@ -160,8 +167,7 @@ const Cart = ({ flowerArray, loading }) => {
             </div>
             <div className="total__item total__price">
               <span>Total</span>
-              <span>${(totalPrice + totalPrice * 0.1).toFixed(2)}</span>
-            </div>
+              <span>${(totalPrice + totalPrice * 0.1).toFixed(2)}</span>                          </div>
             <button
               onClick={(e) => {
                 performCheckOut(e);
@@ -173,8 +179,13 @@ const Cart = ({ flowerArray, loading }) => {
               <button className="continue__shopping" onClick={() => navigate("/")}>
                 Continue Shopping
               </button>
+              </Fade>
+              
           </div>
+          
         )}
+      </div>
+      </JackInTheBox>
       </div>
     </div>
   );

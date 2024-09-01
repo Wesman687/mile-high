@@ -14,7 +14,7 @@ const Footer = () => {
       <Link to="/cart">
             <div className="footer__container">
             <Fade duration={2500}>
-            {(isOpen) && <>
+            {(isOpen) ?<>
                 <div className="shopping_container">
               <FontAwesomeIcon
                 icon={faShoppingCart}
@@ -25,7 +25,8 @@ const Footer = () => {
                 <span className="cart__length">{numberOfItems}</span>
               )}
               </>
-              }
+              :
+              <></>}
               </Fade>
               </div>
 

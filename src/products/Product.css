@@ -35,7 +35,6 @@
   gap: 12px;
   width: 250px;
   height: 350px;
-  backdrop-filter: blur(10px);
   box-shadow: rgb(1, 250, 1) 5px 5px 60px 0.5px;
 }
 .product__strain {
