@@ -110,7 +110,6 @@ const ProductDisplay = ({ flowerArray, loading }) => {
   useEffect(() => {
     getPrice("Ounce", 1);
   }, []);
-  console.log(flowerArray[id])
   return (
     <div className="row">
       <div className="pd__container">
@@ -217,7 +216,7 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                   <>
                     <Bounce cascade={true} delay={1300} duration={2500}>
                       <Fade delay={250}>
-                      <h1 className="pd__desc" inner>{(flowerArray[id].desc)}</h1>
+                      <h1 className="pd__desc">{(flowerArray[id].desc)}</h1>
                   {(isResin() === true) &&  <>                  
                     <Fade cascade={true} delay={3800}>
                      <p className="pd__resin">Unlike other concentrates, Live Resin is made from freshly harvest ed hemp plants that haven't been cured or dried. This distinction is crucial because it maintains the rich terpene profile and peak cannabinoid content that often gets lost in the drying and curing process.</p>
