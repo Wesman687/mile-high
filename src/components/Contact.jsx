@@ -14,8 +14,6 @@ const Contact = () => {
     const [text, setText] = useState("")
     const [isSending, setIsSending] = useState(false)
     const [sendStatus, setSendStatus] = useState({ processed: false, message: "", variant: "success" })
-    const [isEmail, setIsEmail] = useState(false)
-    const [isText, setIsText] = useState(false)
     const timeoutAlert = () =>
         setTimeout(() => {
           setSendStatus({ ...sendStatus, processed: false })
@@ -44,7 +42,6 @@ const Contact = () => {
             user_email: email,
             message: text
         }
-        console.log(templateParams)
           const response = await emailjs.send(serviceid, templateid, templateParams, publicKey)
     
           console.log("Email sent successfully:", response)

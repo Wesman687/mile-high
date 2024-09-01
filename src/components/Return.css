@@ -33,3 +33,8 @@
 
     }
 }
+@media (max-width: 550px) {
+    .continue__browsing {
+        width: 200px;
+    }
+}

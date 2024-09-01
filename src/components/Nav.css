@@ -117,7 +117,7 @@
     color: rgba(0, 255, 0, 0.712);
 }
 .btn__nav--link:hover {
-    color: rgba(0, 255, 0, 0.712)
+    color: white;
 }
 .btn__menu {
     position: relative;

@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import { addCart, totalQuantity } from "../redux/cartSlice";
+import FlyingButton from '../components/animations/FlyingButton'
  
 
 const ProductDisplay = ({ flowerArray, loading }) => {
@@ -187,12 +188,18 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                       </div>
                     </div>
                     {productExistsOnCart() ? (
+                      <FlyingButton 
+                      src={flowerArray[id].image}
+                      targetTop={'90%'}
+                      targetLeft={'0%'}
+                      >
                       <button
                         onClick={() => navigate("/cart")}
                         className="checkout click"
                       >
                         Go To Cart
                       </button>
+                      </FlyingButton>
                     ) : (
                       <button
                         className="checkout click"

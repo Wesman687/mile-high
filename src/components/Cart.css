@@ -204,7 +204,8 @@
   @media (max-width: 1200px) {
     .cart__row {
       width: 80%;
-      height: 80%;
+      height: fit-content;
+      padding: 0px 0px 64px;
     }
     .cart__book--price {
       padding-bottom: 0;
@@ -228,10 +229,6 @@
       font-size: 8px;
       width: 20%;
     }
-    .cart__empty--img {
-      width: 60%;
-      padding: 32px 0;
-    }
   }
   /* SMALL PHONES, TABLETS, LARGE SMARTPHONES */
   @media (max-width: 768px) {
@@ -245,17 +242,16 @@
     h2 {
       font-size: 26px;
     }
-    .cart__row {
-      width: 95%;
-      padding: 0;
-    }
     .cart__item {
       padding: 12px 6px;
     }
     button {
       font-size: 18px;
     }
-  
+    .cart__home {
+      padding: 4px 8px;
+      font-size: 16px;
+    }
     .book {
       width: 50%;
     }
@@ -281,6 +277,20 @@
   @media (max-width: 550px) {
     .btn__menu {
       display: block;
+    }
+    .cart__home {
+      padding: 2px 4px;
+      font-size: 12px;
+      border-radius: 4px;
+    }
+    .cart__text {
+      font-size: 12px;
+    }
+    .cart__header {
+      font-size: 12px;
+    }
+    .cart__total {
+      font-size: 12px;
     }
     
     .nav__list {
