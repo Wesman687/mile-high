@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import { addCart, totalQuantity } from "../redux/cartSlice";
+import { Bounce, Fade, Slide } from "react-awesome-reveal";
  
 
 const ProductDisplay = ({ flowerArray, loading }) => {
@@ -122,12 +123,18 @@ const ProductDisplay = ({ flowerArray, loading }) => {
               <>
                 <div className="pd__wrapper">
                   <div className="info__wrapper">
+                    <Slide direction="left">
+                      <Fade delay={200} duration={4500}>
                   <img
                     src={flowerArray[id].image}
                     alt=""
                     className="pd__image"
                   />
+                  </Fade>
+                  </Slide>
                   <div className="pd__info">
+                  <Fade delay={1000} duration={5000}>
+                    
                     <h1 className="pd__title">{flowerArray[id].title}</h1>
                     {(flowerArray[id].category === "Resin/Crumble") ? 
                     <select
@@ -186,6 +193,7 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                         </button>
                       </div>
                     </div>
+                    
                     {productExistsOnCart() ? (
                       <button
                         onClick={() => navigate("/cart")}
@@ -201,9 +209,12 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                         Add to Cart
                       </button>
                     )}
+                  </Fade>
                   </div>
                   </div>
                   <div className="desc__container">
+                    <Bounce cascade={true} delay={1300} duration={2500}>
+                      <Fade delay={250}>
                   {isResin() ?  <>
                   <h1 className="pd__crumble">THCa Live Resin is a cannabis concentrate that preserves the raw, fresh flavors and aromas of the cannabis plant.</h1>
                      <p className="pd__resin">Unlike other concentrates, Live Resin is made from freshly harvest ed hemp plants that haven't been cured or dried. This distinction is crucial because it maintains the rich terpene profile and peak cannabinoid content that often gets lost in the drying and curing process.</p>
@@ -212,13 +223,18 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                   : 
                   <h1 className="pd__desc">{(flowerArray[id].desc.replace(/(?:\\[rn]|[\r\n])/g," "))}</h1>}
                   {isCrumble() && <>
+                  <Fade cascade={true} delay={3800}>
                   <h1 className="pd__crumble">How Long does crumble take to hit</h1>
                   <p>Once you place the crumble on your dab rig and take the first toke, within a few seconds to a minute it will hit you.</p>
                   <h1 className="pd__crumble">How to consume Crumble</h1>
                   <p>The most common way to consume crumble is with a dab rig, but you could certainly vaporize it, or even ingest it in a food product if you wanted to.</p>
                   <br />
                   <p>We find that our customers report back the best results and experience is dabbing it, but to each their own.</p>
+                  </Fade>
                   </>}
+                  
+                  </Fade>
+                  </Bounce>
                   </div>
                   
                 </div>

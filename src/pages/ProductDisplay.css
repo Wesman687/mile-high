@@ -7,10 +7,12 @@
   flex-direction: column;
   height: 100vh;
   padding-top: 32px;
+  overflow: scroll;
 }
 .pd__image {
-    width: 350px;
+    width: 250px;
     max-height: 40vh;
+    border-radius: 4px;
 }
 .pd__wrapper {
     display: flex;
@@ -47,20 +49,25 @@
 }
 .pd__options {
     width: 50%;
+    margin-bottom: 12px;
 }
 .amount__field {
     background-color: #bbb7b7;
     font-size: 14px;
-    padding: 6px 12px;
+    padding: 2px 6px;
+    height: fit-content;
     border-radius: 4px;
     display: inline-block;
     text-align: center;
     vertical-align: middle;
-    width: 2.5rem;
+}
+.amount__button {
+    display: flex;
+    align-items: center;
 }
 .up, .down {
     font-size: 12px;
-    padding: 4px 8px;
+    padding: 2px 6px;
     border-radius: 4px;
     margin: 4px;
     background-color: rgba(0, 255, 0, 0.712);
@@ -122,7 +129,7 @@
 }
 .display__price {
     color: rgb(0, 255, 0);
-    padding-top: 12px;
+    margin-top: 24px;
     font-size: 18px;
 }
 @media (max-width: 1200px) {
@@ -151,6 +158,9 @@
         width: 100vw;
         padding: 0 !important;
     }
+    .checkout {
+        width: 125px;
+    }
     .pd__image {
         width: 150px;
         height: 150px;
@@ -170,6 +180,10 @@
     .row {
         padding: 0;
     }
+    .amount__field {
+        font-size: 12px;
+        
+    }
     .pd__info {        
         padding: 24px 0px;
         align-items: center;
@@ -182,7 +196,7 @@
         flex-direction: column;
     }
     .amount__button {
-        padding: 12px 0px;
+        padding: 8px 0px;
     }
     .display__price {
         padding-top: 12px;
@@ -198,9 +212,6 @@
     .pd__image {
         width: 75px;
         height: 75px;
-    }
-    .checkout {
-        width: 125px;
     }
     .pd__crumble {
         font-size: 16px;
