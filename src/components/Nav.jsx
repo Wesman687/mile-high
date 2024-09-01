@@ -11,6 +11,7 @@ import wholeSale from "../assetts/wholeSale.png";
 import hemp from "../assetts/Hemp.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { openLoginModal } from "../redux/modalSlice";
+import { Fade, Slide } from "react-awesome-reveal";
 const Nav = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
@@ -43,6 +44,7 @@ const Nav = () => {
           <button className="btn__menu btn__menu--close" onClick={closeMenu}>
             <FontAwesomeIcon icon="times" />
           </button>
+          
           <ul className="menu__links">
             <li className="menu__list">
               <Link to="/" className="menu__link" onClick={closeMenu}>
