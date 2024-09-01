@@ -7,6 +7,7 @@
     justify-content: center;
     text-align: center;
     min-height: 90vh;
+    padding: 64px 0;
 }
 .aboutus__container {
     display: flex;
@@ -15,7 +16,7 @@
 }
 .aboutus__wrapper h1 {
     padding: 32px;
-    font-size: 34px;
+    font-size: 28px;
 }
 .aboutus__wrapper p {
     font-size: 32px;

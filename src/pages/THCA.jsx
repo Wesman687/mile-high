@@ -1,9 +1,11 @@
 import React from "react";
 import "./THCA.css";
+import { Fade } from "react-awesome-reveal";
 const THCA = () => {
   return (
     <div className="landing__container">
       <div className="thca__wrapper page__wrappers">
+        <Fade triggerOnce={true}>
         <h1>WHAT IS THCa?</h1>
         <p>
           Tetrahydrocannabinolic acid (THCA) is a type of chemical called a
@@ -72,6 +74,7 @@ const THCA = () => {
         illegal because you can buy THCA and alter it to get high the way you
         would with marijuana.
       </p>
+      </Fade>
       </div>
     </div>
   );

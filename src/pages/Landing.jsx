@@ -3,7 +3,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import "./Landing.css";
 import Product from "../products/Product";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AttentionSeeker, Bounce, Fade, Flip, Hinge, JackInTheBox, Roll, Rotate } from 'react-awesome-reveal'
+import { AttentionSeeker, Fade,  Roll } from 'react-awesome-reveal'
 import { useDispatch, useSelector } from "react-redux";
 import { openCartModal } from "../redux/modalSlice";
 

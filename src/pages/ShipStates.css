@@ -1,18 +1,19 @@
-.ship__wrapper {
+.states__wrapper {
     width: 100%;
     height: 100%;
-    padding-top: 64px;
+    padding: 128px;
 }
-.ship__wrapper p {
+.states__wrapper p {
     text-align: center;
     font-size: 32px;
-    line-height: 1.5;
+    line-height: 2;
 }
 @media (max-width: 756px) { 
-    .ship__wrapper p {
-        font-size: 22px;
+    .states__wrapper p {
+        font-size: 20px;
     }
-    .ship__wrapper {
+    .states__wrapper {
         width: 80%;
+        padding: 64px 16px;
     }
 }

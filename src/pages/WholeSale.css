@@ -4,14 +4,26 @@
     min-height: 90vh;
 }
 .wholesale__wrapper img {
-    width: 40%;
-    padding: 32px;
+    width: 30%;
+    padding: 12px;
+    border-radius: 4px;
+}
+.wholesale__image {
+    box-shadow: rgb(1, 250, 1) 5px 5px 30px 0.5px;
+
 }
 .wholesale__wrapper {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+.slide__wholesale {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .wholesale__link {
     cursor: pointer;
