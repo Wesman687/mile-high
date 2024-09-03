@@ -122,17 +122,19 @@ const ProductDisplay = ({ flowerArray, loading }) => {
         ) : (
           <>
             {flowerArray.length > 0 && (
-              <>
+              
                 <div className="pd__wrapper">
                   <div className="info__wrapper">
-                    <Slide triggerOnce={true} direction="left">
+                    <Slide triggerOnce={true}>
                       <Fade triggerOnce={true} delay={200} duration={4500}>
                         <div className="display__image--wrapper">
+                          <div className="display__image--box">
                           <img
                             src={imageDisplay}
                             alt=""
                             className="pd__image"
                           />
+                          </div>
                           <div className=" display__slide--wrapper">
                             {flowerArray[id].images.map((item, index) => (
                               <div
@@ -241,7 +243,7 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                   </div>
                   <div className="desc__container">
                     <>
-                      <Bounce triggerOnce={true} cascade={true} delay={1300} duration={2500}>
+                      <Bounce triggerOnce={true} delay={1300} duration={2500}>
                         <Fade triggerOnce={true} delay={250}>
                           <h1 className="pd__desc">{flowerArray[id].desc}</h1>
                           {isResin() === true && (
@@ -300,8 +302,7 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                       </Bounce>
                     </>
                   </div>
-                </div>
-              </>
+                </div>              
             )}            
           </>
         )}

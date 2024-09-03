@@ -82,7 +82,7 @@ const Cart = ({ flowerArray }) => {
                     <div className="box__title">
                       <div className="cart__img--title">
                         <img
-                          src={flowerArray[items.id].image}
+                          src={flowerArray[items.id].images[0].link}
                           alt=""
                           className="cart__item--img"
                         />
