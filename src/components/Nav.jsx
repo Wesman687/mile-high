@@ -11,7 +11,6 @@ import wholeSale from "../assetts/wholeSale.png";
 import hemp from "../assetts/Hemp.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { openLoginModal } from "../redux/modalSlice";
-import { Fade, Slide } from "react-awesome-reveal";
 const Nav = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
@@ -52,33 +51,39 @@ const Nav = () => {
               </Link>
             </li>
             <h1 className="menu__header">About</h1>
-            <Link to="/wholesale">
+            <Link  onClick={closeMenu} to="/wholesale">
                 <p className="sb__link">WHOLESALE</p>
               </Link>
-              <Link to="/aboutus">
+              <Link  onClick={closeMenu} to="/aboutus">
                 <p className="  sb__link">About Us</p>
               </Link>
-              <Link to="/benefits">
+              <Link  onClick={closeMenu} to="/benefits">
                 <p className="  sb__link">THCA Benefits</p>
               </Link>
-              <Link to="/THCA">
+              <Link  onClick={closeMenu} to="/THCA">
                 <p className=" sb__link">WHAT IS THCA?</p>
               </Link>
-              <Link to="/shipstates">
+              <Link  onClick={closeMenu} to="/shipstates">
                 <p className="sb__link ">Ship States</p>
               </Link>              
               
-              <Contact />
+              <Contact  />
             <h1 className="menu__header">Account</h1>            
 
             {!user.email ? <>
-                <p className="sb__link click" onClick={()=>dispatch(openLoginModal())}>Login</p>
+                <p className="sb__link click" onClick={()=>{
+                  dispatch(openLoginModal())
+                  closeMenu()
+                }}>Login</p>
               </>
               : (              
                 <>
-                  <AccountSettings />
+                  <AccountSettings  />
                   <p className="sb__link click">Orders</p>
-                  <p className="sb__link click" onClick={() => logOut()}>
+                  <p className="sb__link click" onClick={() => {
+                    logOut()
+                    closeMenu()
+                    }}>
                     Log Out
                   </p>
                 </>              
@@ -93,9 +98,9 @@ const Nav = () => {
           
           <div className="about">
             <p className="nav_link">About</p>
-            <div className="about_dropdown">
-              <Link to="/wholesale">
-                <p className="sb__link">WHOLESALE</p>
+            <div  className="about_dropdown">
+              <Link  to="/wholesale">
+                <p  className="sb__link">WHOLESALE</p>
               </Link>
               <Link to="/aboutus">
                 <p className="  sb__link">About Us</p>

@@ -3,7 +3,7 @@ import "./WholeSale.css";
 import img from "../assetts/img2original.jpg";
 import { useDispatch } from "react-redux";
 import { openContactModal } from "../redux/modalSlice";
-import { AttentionSeeker, Fade, Roll, Slide } from "react-awesome-reveal";
+import { AttentionSeeker, Fade, Slide } from "react-awesome-reveal";
 
 
 const WholeSale = () => {

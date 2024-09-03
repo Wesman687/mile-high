@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Contact.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { Fade, Modal, Zoom } from '@mui/material'
+import { Modal} from '@mui/material'
 import { closeContactModal, openContactModal } from '../redux/modalSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import emailjs from "@emailjs/browser"

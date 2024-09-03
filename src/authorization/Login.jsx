@@ -7,9 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeLoginModal, openLoginModal } from "../redux/modalSlice.js";
 import {  
   onAuthStateChanged, createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  getAuth,  
+  signInWithEmailAndPassword
 } from "firebase/auth";
 import { State, City } from "country-state-city";
 import { setUser } from "../redux/userSlice.js";
@@ -17,7 +15,6 @@ import { addDoc, collection, where, getDocs, query } from "firebase/firestore";
 import Select from "react-select";
 import { GoogleAuthProvider } from "firebase/auth";
 
-const provider = new GoogleAuthProvider();
 
 const Login = () => {
   const states = State.getAllStates();
@@ -55,28 +52,7 @@ const Login = () => {
     });
     return valueCities;
   };
-  function loginGoogle() {
-    
-    signInWithPopup(auth, provider)
-  .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-    // IdP data available using getAdditionalUserInfo(result)
-    // ...
-  }).catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
-  });
-  }
+  
   async function handleSignUp(e) {
     e.preventDefault();
     setLoading(true)
@@ -96,7 +72,7 @@ const Login = () => {
     
     
     dispatch(closeLoginModal());
-    const docRef = await addDoc(collection(db, `user`), {
+    await addDoc(collection(db, `user`), {
       uid: res.uid,
       firstName: firstName,
       lastName: lastName,

@@ -125,8 +125,8 @@ const ProductDisplay = ({ flowerArray, loading }) => {
               <>
                 <div className="pd__wrapper">
                   <div className="info__wrapper">
-                    <Slide direction="left">
-                      <Fade delay={200} duration={4500}>
+                    <Slide triggerOnce={true} direction="left">
+                      <Fade triggerOnce={true} delay={200} duration={4500}>
                         <div className="display__image--wrapper">
                           <img
                             src={imageDisplay}
@@ -148,6 +148,7 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                                 onMouseLeave={()=>setImageDisplay(lastImageDisplay)}
                               >
                                 <img
+                                alt=""
                                   src={item.link}
                                   className="slide__images"
                                 />
@@ -158,7 +159,7 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                       </Fade>
                     </Slide>
                     <div className="pd__info">
-                      <Fade delay={1000} duration={5000}>
+                      <Fade triggerOnce={true} delay={1000} duration={5000}>
                         <h1 className="pd__title">{flowerArray[id].name}</h1>
                         {flowerArray[id].category === "Resin/Crumble" ? (
                           <select
@@ -240,12 +241,12 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                   </div>
                   <div className="desc__container">
                     <>
-                      <Bounce cascade={true} delay={1300} duration={2500}>
-                        <Fade delay={250}>
+                      <Bounce triggerOnce={true} cascade={true} delay={1300} duration={2500}>
+                        <Fade triggerOnce={true} delay={250}>
                           <h1 className="pd__desc">{flowerArray[id].desc}</h1>
                           {isResin() === true && (
                             <>
-                              <Fade cascade={true} delay={3800}>
+                              <Fade triggerOnce={true} cascade={true} delay={3800}>
                                 <p className="pd__resin">
                                   Unlike other concentrates, Live Resin is made
                                   from freshly harvest ed hemp plants that
@@ -268,7 +269,7 @@ const ProductDisplay = ({ flowerArray, loading }) => {
 
                           {isCrumble() === true && (
                             <>
-                              <Fade cascade={true} delay={3800}>
+                              <Fade triggerOnce={true} cascade={true} delay={3800}>
                                 <h1 className="pd__crumble">
                                   How Long does crumble take to hit
                                 </h1>

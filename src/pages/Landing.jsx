@@ -11,7 +11,6 @@ import { openCartModal } from "../redux/modalSlice";
 const Landing = ({flowerArray, loading}) => {
   const numberOfItems = useSelector((state) => state.cart.totalQuantity);
   const dispatch = useDispatch()
-  console.log(flowerArray)
   useEffect(()=>{
     if (numberOfItems > 0) {
       dispatch(openCartModal())
@@ -25,8 +24,8 @@ const Landing = ({flowerArray, loading}) => {
               
               {flowerArray.map((flower, index) => (
                 <Roll key={index} delay={index*300}>
-                  <Fade  delay={index*400}>
-                  <AttentionSeeker effect='tada' delay={flowerArray.length * 400 + 400} duration={'2000'}>
+                  <Fade triggerOnce={true}  delay={index*400}>
+                  <AttentionSeeker triggerOnce={true} effect='tada' delay={flowerArray.length * 400 + 400} duration={'2000'}>
                 <Product item={flower} index={index} key={index}/>  
                 </AttentionSeeker>
                 </Fade>

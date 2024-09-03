@@ -11,17 +11,13 @@ import {
 import { useEffect } from "react";
 import {
   addDoc,
-  collection,
-  doc,
-  getDocs,
-  query,
-  where,
+  collection
 } from "firebase/firestore";
 import { db } from "../firebase/init";
 import { closeCartModal, openLoginModal } from "../redux/modalSlice";
-import { Fade, JackInTheBox, Roll } from "react-awesome-reveal";
+import { Fade, JackInTheBox } from "react-awesome-reveal";
 
-const Cart = ({ flowerArray, loading }) => {
+const Cart = ({ flowerArray }) => {
   const totalPrice = useSelector((state) => state.cart.totalPrice);
   const cart = useSelector((state) => state.cart.cart);
   const user = useSelector((state) => state.user);
@@ -29,12 +25,6 @@ const Cart = ({ flowerArray, loading }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   async function addOrder() {
-    const userRef = await query(
-      collection(db, "user"),
-      where("uid", "==", user.uid)
-    );
-    const data = await getDocs(userRef);
-    const docRef = doc(db, "user", data.docs[0].id);
     const order = {
       uid: user.uid,
       cart: cart,
@@ -42,7 +32,7 @@ const Cart = ({ flowerArray, loading }) => {
       totalPrice: wholeCart.totalPrice,
     };
 
-    const orderDoc = await addDoc(collection(db, "orders"), order);
+    await addDoc(collection(db, "orders"), order);
   }
   function performCheckOut(e) {
     console.log(user);
@@ -71,7 +61,7 @@ const Cart = ({ flowerArray, loading }) => {
   return (
     <div className="cart__container">
       <div className="jack__container">
-      <JackInTheBox>
+      <JackInTheBox triggerOnce={true}>
       <div className="cart__row">
         <div className="book__selected--top">
           <h2 className="cart__title">Cart</h2>
@@ -87,7 +77,7 @@ const Cart = ({ flowerArray, loading }) => {
             {cart.map((items, index) => {
               return (
                 <div className="cart__item--wrapper" key={index}>
-                  <Fade delay={1000 + index * 500}>
+                  <Fade triggerOnce={true} delay={1000 + index * 500}>
                   <div className="cart__item">
                     <div className="box__title">
                       <div className="cart__img--title">
@@ -156,7 +146,7 @@ const Cart = ({ flowerArray, loading }) => {
         {cart.length > 0 && (
           <div className="total">
             
-            <Fade className="cart__fade" cascade={true} delay={1000 + cart.length * 500}>
+            <Fade triggerOnce={true} className="cart__fade" cascade={true} delay={1000 + cart.length * 500}>
             <div className="total__item total__sub-total">
               <span>Subtotal    </span>
               <span>${totalPrice.toFixed(2)}</span>
