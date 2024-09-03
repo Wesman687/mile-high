@@ -10,7 +10,7 @@ const Product = ({item, index}) => {
       <h1 className="product__name">{item.name}</h1>
       <h1 className="product__title">{item.title}</h1>
       <figure className="img__wrapper">
-      <img src={item.image} onDragStart={handleDragStart} role="presentation" alt="" className="product__image" />
+      <img src={item.images[0].link} onDragStart={handleDragStart} role="presentation" alt="" className="product__image" />
       </figure>
       <div className="price__wrapper">
         <h2 className="product__price">${item.prices[0]} - ${item.prices[2]}</h2>

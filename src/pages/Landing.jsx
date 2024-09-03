@@ -11,6 +11,7 @@ import { openCartModal } from "../redux/modalSlice";
 const Landing = ({flowerArray, loading}) => {
   const numberOfItems = useSelector((state) => state.cart.totalQuantity);
   const dispatch = useDispatch()
+  console.log(flowerArray)
   useEffect(()=>{
     if (numberOfItems > 0) {
       dispatch(openCartModal())

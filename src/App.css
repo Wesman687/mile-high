@@ -16,6 +16,8 @@ body {
 }
 .main {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .page__wrappers {  
   display: flex;

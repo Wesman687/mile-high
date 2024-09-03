@@ -1,18 +1,20 @@
 .pd__container {
   background-color: #05050509;
   width: 100vw;
+  min-height: 100vh;
+  padding-top: 128px;
+  overflow: scroll;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  height: 100vh;
-  padding-top: 32px;
-  overflow: scroll;
 }
 .pd__image {
     width: 250px;
-    max-height: 40vh;
+    max-height: 200px;
+    overflow: hidden;
     border-radius: 4px;
+    border: 1px solid lightgray;
 }
 .pd__wrapper {
     display: flex;
@@ -126,13 +128,35 @@
 .amount__button {
     display: flex;
 }
-.thumb__image:hover {
-    transform: scale(150%);
-}
 .display__price {
     color: rgb(0, 255, 0);
     margin-top: 24px;
     font-size: 18px;
+}
+.display__slide--wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+
+}
+.display__image--wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+.slide__images {
+    border: 1px solid lightgrey;
+    width: 50px;
+    max-height: 40px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.slide__images:hover {
+    transform: scale(150%);
 }
 @media (max-width: 1200px) {
     .pd__wrapper {
@@ -143,51 +167,39 @@
         width: 250px;
     }
     .info__wrapper {
-        width: 100%;
-    }
-    .pd__info {
-        width: 50%;
+        width: 80%;
     }
     .pd__options {
         width: 75px !important;
     }
-    .checkout {
-        width: 30%;
-    }
 }
 @media (max-width: 768px) {
-    .pd__container {
-        width: 100vw;
-        padding: 0 !important;
-    }
     .checkout {
         width: 125px;
     }
     .pd__image {
-        width: 150px;
+        width: 175px;
         height: 150px;
     }
     .desc__container {
         padding: 0 16px;
     }
-    .pd__wrapper {
-        padding: 0;
-    }
-    .pd__thumb--window {
-        display: none;
-    }
     .filler {
         display: none;
     }
-    .row {
-        padding: 0;
+    .display__image--wrapper {
+        flex-direction: row;
+    }
+    .display__slide--wrapper {
+        width: 30%;
+        margin-left: 24px;
     }
     .amount__field {
         font-size: 12px;
         
     }
     .pd__info {        
-        padding: 24px 0px;
+        padding: 24px 24px;
         align-items: center;
     }
     .pd__title {
@@ -205,9 +217,6 @@
     }
   }
   @media (max-width: 550px) { 
-    .pd__wrapper {
-        padding-top: 164px;
-    }
     .info__wrapper {
         flex-direction: column;
     }
@@ -220,5 +229,9 @@
     }
     .pd__resin {
         font-size: 14px;
+    }
+    .slide__images {
+        width: 30px;
+        height: 30px;
     }
   }
