@@ -62,15 +62,9 @@ body {
 }
 @keyframes imageSpin {
   0% { 
-      transform: rotateX(0) translateX(0px);
-      opacity: 1;
-  }
-  50% {
-    transform: translateX(-50px) rotateX(180deg);
-    opacity: .5;
+      opacity: .2;
   }
   100% {
-      transform: rotateX(360deg) translateX(0px);
       opacity: 1;
   }
 }

@@ -19,22 +19,6 @@ const ProductDisplay = ({ flowerArray, loading }) => {
   id = id.index;
   const user = useSelector((state) => state.user);
   const cart = useSelector((state) => state.cart.cart);
-  const [visible, setVisible] = useState(false);
-  const [animationActive, setAnimationActive] = useState(false);
-
-  const show = () => {
-    setVisible(true);
-    setAnimationActive(true);
-  };
-
-  const hide = () => {
-    setVisible(false);
-    setAnimationActive(true);
-  };
-
-  const onAnimationEnd = () => {
-    setAnimationActive(false);
-  };
   function isCrumble() {
     return flowerArray[id].name.search("Crumble") === 0;
   }
@@ -128,7 +112,6 @@ const ProductDisplay = ({ flowerArray, loading }) => {
       setLastImageDisplay(flowerArray[id].images[0].link);
     
   }, []);
-  console.log(animationActive)
   const imageRef = document.querySelector('.pd__image')
   function animateStart() {
     imageRef.classList += " image-spinner";
@@ -168,7 +151,7 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                                 className="display__image--slide"
                                 key={index}
                                 onClick={() => {
-                                  setAnimationActive(animateStart)
+                                  animateStart()
                                   setImageDisplay(item.link)
                                   setLastImageDisplay(item.link)
                                 }}
