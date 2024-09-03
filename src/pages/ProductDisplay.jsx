@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./ProductDisplay.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,6 +19,22 @@ const ProductDisplay = ({ flowerArray, loading }) => {
   id = id.index;
   const user = useSelector((state) => state.user);
   const cart = useSelector((state) => state.cart.cart);
+  const [visible, setVisible] = useState(false);
+  const [animationActive, setAnimationActive] = useState(false);
+
+  const show = () => {
+    setVisible(true);
+    setAnimationActive(true);
+  };
+
+  const hide = () => {
+    setVisible(false);
+    setAnimationActive(true);
+  };
+
+  const onAnimationEnd = () => {
+    setAnimationActive(false);
+  };
   function isCrumble() {
     return flowerArray[id].name.search("Crumble") === 0;
   }
@@ -108,10 +124,20 @@ const ProductDisplay = ({ flowerArray, loading }) => {
   }
   useEffect(() => {
     getPrice("Ounce", 1);
-    if (id) {
-      setImageDisplay(flowerArray[id].images[0].link);
-    }
+      setImageDisplay(flowerArray[id].images[0].link)
+      setLastImageDisplay(flowerArray[id].images[0].link);
+    
   }, []);
+  console.log(animationActive)
+  const imageRef = document.querySelector('.pd__image')
+  function animateStart() {
+    imageRef.classList += " image-spinner";
+  }
+
+  function animateStop() {
+    imageRef.classList.remove("image-spinner");
+  }
+  
   return (
     <div className="row">
       <div className="pd__container">
@@ -133,6 +159,7 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                             src={imageDisplay}
                             alt=""
                             className="pd__image"
+                            onAnimationEnd={animateStop}
                           />
                           </div>
                           <div className=" display__slide--wrapper">
@@ -141,11 +168,11 @@ const ProductDisplay = ({ flowerArray, loading }) => {
                                 className="display__image--slide"
                                 key={index}
                                 onClick={() => {
+                                  setAnimationActive(animateStart)
                                   setImageDisplay(item.link)
-                                  setLastImageDisplay(imageDisplay)
+                                  setLastImageDisplay(item.link)
                                 }}
                                 onMouseEnter={() =>{
-                                  setLastImageDisplay(imageDisplay)
                                   setImageDisplay(item.link)}}
                                 onMouseLeave={()=>setImageDisplay(lastImageDisplay)}
                               >

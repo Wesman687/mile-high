@@ -60,3 +60,16 @@ body {
     opacity: .4;
   }
 }
+@keyframes imageSpin {
+  0% { 
+      transform: rotateX(0);
+      opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+      transform: rotateX(360deg);
+      opacity: 1;
+  }
+}
