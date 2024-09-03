@@ -5,8 +5,8 @@
 }
 .wholesale__wrapper img {
     width: 30%;
-    padding: 12px;
-    border-radius: 4px;
+    padding: 3px;
+    border-radius: 2px;
 }
 .wholesale__image {
     box-shadow: rgb(1, 250, 1) 5px 5px 30px 0.5px;
