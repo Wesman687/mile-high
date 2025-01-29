@@ -7,7 +7,7 @@ export const productsApi = createApi({
     }),
     endpoints: (builder) => ({
         getAllFlowers: builder.query({
-            query: () => "/apiflower/list"
+            query: () => "api/flower/list"
         })
     })
 })
