@@ -36,6 +36,7 @@
     pointer-events: none;
     bottom: 9%;
     right: 6%;
+    
   }
   @media (max-width: 550px) {
     .shopping__cart {

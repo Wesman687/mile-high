@@ -3,11 +3,11 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const productsApi = createApi({
     reducerPath: "productsApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: "https://milehighserv.onrender.com/api/"
+        baseUrl: "https://sea-lion-app-r75mq.ondigitalocean.app/"
     }),
     endpoints: (builder) => ({
         getAllFlowers: builder.query({
-            query: () => "flower/list"
+            query: () => "/apiflower/list"
         })
     })
 })

@@ -33,6 +33,7 @@
     cursor: pointer;
     animation: rotateHalf 8500ms infinite ease-in-out;
     z-index: 50;
+    
 }
 .nav_link:hover { 
     color: rgba(0, 255, 0, 0.712);

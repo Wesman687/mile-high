@@ -14,7 +14,7 @@ const Return = () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const sessionId = urlParams.get("session_id");
-    fetch(`https://milehighserv.onrender.com/session-status?session_id=${sessionId}`)
+    fetch(`https://sea-lion-app-r75mq.ondigitalocean.app/session-status?session_id=${sessionId}`)
       .then((res) => res.json())
       .then((data) => {
         setStatus(data.status);
@@ -32,7 +32,7 @@ const Return = () => {
       <div className="cart__container">
         <div className="cart__row">
           <div className="book__selected--top">
-            <h2 className="cart__title">Cart</h2>
+            <h2 className="cart__title">Cart</h2> 
           </div>
           <div className="cart">
             <div className="cart__header">

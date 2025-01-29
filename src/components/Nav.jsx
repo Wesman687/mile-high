@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { openLoginModal } from "../redux/modalSlice";
 const Nav = () => {
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user);//test
   const dispatch = useDispatch();
   async function logOut() {
     await signOut(auth);

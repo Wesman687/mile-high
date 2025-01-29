@@ -5,7 +5,7 @@ import { Modal} from '@mui/material'
 import { closeContactModal, openContactModal } from '../redux/modalSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import emailjs from "@emailjs/browser"
-
+//
 const Contact = () => {
     const isOpen = useSelector((state) => state.modals.contactModalOpen)
     const dispatch = useDispatch()
@@ -17,7 +17,8 @@ const Contact = () => {
     const timeoutAlert = () =>
         setTimeout(() => {
           setSendStatus({ ...sendStatus, processed: false })
-        }, 3000)
+        }, 3000) 
+
     const checkCredentials = () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
         if (text && name && emailRegex.test(email))
